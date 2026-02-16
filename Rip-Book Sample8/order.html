@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ShipSwift · order registration</title>
+    <!-- Google Font & simple reset -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: linear-gradient(145deg, #f6f9fc 0%, #eef2f7 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Inter', system-ui, -apple-system, sans-serif;
+            padding: 1.5rem;
+        }
+
+        .order-card {
+            max-width: 1200px;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            border-radius: 2.5rem;
+            box-shadow: 0 30px 60px rgba(0, 10, 30, 0.15), 0 8px 20px rgba(0, 20, 50, 0.1);
+            padding: 2.5rem 2.8rem;
+            border: 1px solid rgba(255, 255, 255, 0.5);
+        }
+
+        h1 {
+            font-size: 2rem;
+            font-weight: 600;
+            letter-spacing: -0.02em;
+            color: #0b2b3c;
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            margin-bottom: 0.25rem;
+        }
+
+        .subhead {
+            font-size: 0.95rem;
+            color: #4e6679;
+            font-weight: 400;
+            margin-bottom: 2.5rem;
+            border-left: 3px solid #2897c9;
+            padding-left: 1rem;
+            background: rgba(40, 151, 201, 0.06);
+            border-radius: 0 8px 8px 0;
+            line-height: 1.5;
+        }
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem 1.8rem;
+        }
+
+        .section {
+            background: #ffffffd9;
+            backdrop-filter: blur(4px);
+            border-radius: 1.8rem;
+            padding: 1.8rem 1.8rem 2rem;
+            box-shadow: 0 8px 18px -6px rgba(0, 32, 64, 0.08);
+            border: 1px solid rgba(255, 255, 255, 0.7);
+            transition: box-shadow 0.2s;
+        }
+
+        .section:hover {
+            box-shadow: 0 14px 24px -10px rgba(19, 95, 140, 0.18);
+        }
+
+        .section-header {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-bottom: 1.8rem;
+            font-weight: 600;
+            font-size: 1.3rem;
+            color: #144a66;
+            border-bottom: 2px dashed #b9d9ec;
+            padding-bottom: 0.7rem;
+        }
+
+        .section-header i {
+            font-size: 1.5rem;
+            background: #e6f0f8;
+            width: 38px;
+            height: 38px;
+            border-radius: 12px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            color: #1b6b93;
+        }
+
+        .input-row {
+            display: flex;
+            flex-direction: column;
+            gap: 0.4rem;
+            margin-bottom: 1.3rem;
+        }
+
+        .input-row label {
+            font-size: 0.85rem;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.02em;
+            color: #3e5f74;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .input-row label span {
+            color: #c6362a;
+            font-size: 1.1rem;
+            margin-left: 2px;
+        }
+
+        .input-row input,
+        .input-row select,
+        .input-row textarea {
+            font-family: 'Inter', sans-serif;
+            border: 1px solid #cfddee;
+            background: #ffffff;
+            border-radius: 16px;
+            padding: 0.8rem 1.2rem;
+            font-size: 0.95rem;
+            transition: 0.2s;
+            outline: none;
+            color: #11212e;
+            font-weight: 400;
+            box-shadow: inset 0 2px 4px rgba(0,20,30,0.02);
+        }
+
+        .input-row input:focus,
+        .input-row select:focus,
+        .input-row textarea:focus {
+            border-color: #2897c9;
+            box-shadow: 0 0 0 4px rgba(40, 151, 201, 0.12), inset 0 1px 3px #fff;
+            background-color: #fefeff;
+        }
+
+        .input-row textarea {
+            resize: vertical;
+            min-height: 85px;
+        }
+
+        .half-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+        }
+
+        .checkbox-line {
+            display: flex;
+            align-items: center;
+            gap: 0.7rem;
+            margin: 1rem 0 0.8rem;
+        }
+
+        .checkbox-line input {
+            width: 1.2rem;
+            height: 1.2rem;
+            accent-color: #1b8bb9;
+            margin: 0;
+        }
+
+        .checkbox-line label {
+            font-size: 0.9rem;
+            color: #1f4460;
+            font-weight: 450;
+        }
+
+        .order-meta {
+            grid-column: 1 / -1;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.8rem;
+            background: #e9f2f9c2;
+            border-radius: 1.8rem;
+            padding: 1.5rem 2rem;
+            align-items: center;
+            justify-content: space-between;
+            backdrop-filter: blur(4px);
+            border: 1px solid #cddeee;
+            margin-top: 0.5rem;
+        }
+
+        .meta-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .meta-item label {
+            font-weight: 500;
+            color: #1b4c6b;
+            background: white;
+            padding: 0.4rem 1.2rem;
+            border-radius: 40px;
+            font-size: 0.9rem;
+            box-shadow: 0 2px 6px #c2d5e8;
+        }
+
+        .meta-item input, .meta-item select {
+            border: none;
+            background: white;
+            padding: 0.5rem 1.2rem;
+            border-radius: 30px;
+            font-size: 0.95rem;
+            border: 1px solid transparent;
+            min-width: 180px;
+        }
+
+        .meta-item input:focus, .meta-item select:focus {
+            border-color: #2897c9;
+            outline: none;
+        }
+
+        .action-buttons {
+            grid-column: 1 / -1;
+            display: flex;
+            justify-content: flex-end;
+            gap: 1.5rem;
+            margin-top: 2.2rem;
+        }
+
+        .btn {
+            border: none;
+            font-family: 'Inter', sans-serif;
+            font-weight: 600;
+            font-size: 1.1rem;
+            padding: 0.9rem 2.5rem;
+            border-radius: 50px;
+            background: white;
+            color: #124c6e;
+            cursor: pointer;
+            transition: 0.2s;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            box-shadow: 0 4px 10px rgba(0, 40, 70, 0.1);
+            border: 1px solid #c4d9ec;
+        }
+
+        .btn-primary {
+            background: #126e9e;
+            color: white;
+            border: 1px solid #0a5983;
+            box-shadow: 0 10px 22px -10px #126e9e;
+        }
+
+        .btn-primary:hover {
+            background: #085982;
+            transform: scale(1.02);
+            box-shadow: 0 16px 24px -10px #0b5179;
+        }
+
+        .btn:hover {
+            background: #e7f1fa;
+            border-color: #8eb9d9;
+        }
+
+        .btn-primary:hover {
+            background: #0b5982;
+            border-color: #094e73;
+            color: white;
+        }
+
+        hr {
+            border: 1px solid #c7ddec;
+            margin: 1rem 0;
+            opacity: 0.5;
+        }
+
+        .small-note {
+            font-size: 0.8rem;
+            color: #5b7486;
+            margin-top: 0.3rem;
+            display: flex;
+            align-items: center;
+            gap: 0.3rem;
+        }
+
+        .material-symbols-outlined {
+            font-size: 1.3rem;
+        }
+
+        /* dummy icons using unicode/emoji — no external icons */
+        .section-header i {
+            font-style: normal;
+        }
+    </style>
+</head>
+<body>
+    <div class="order-card">
+        <h1>📦 New shipment order</h1>
+        <div class="subhead">Fill in sender & receiver details — all fields marked with <span style="color:#c6362a;">*</span> are required</div>
+
+        <form onsubmit="event.preventDefault(); alert('Order draft saved (demo). In real app this would register the shipment.');">
+            <div class="form-grid">
+                <!-- ========== SENDER SECTION (all details) ========= -->
+                <div class="section">
+                    <div class="section-header">
+                        <i>📤</i> Sender information
+                    </div>
+
+                    <div class="input-row">
+                        <label>Full name / company <span>*</span></label>
+                        <input type="text" placeholder="e.g. John Smith or ABC Corp" value="Michael Chen" required>
+                    </div>
+
+                    <div class="input-row">
+                        <label>Email address <span>*</span></label>
+                        <input type="email" placeholder="sender@example.com" value="m.chen@logistics.co" required>
+                    </div>
+
+                    <div class="half-grid">
+                        <div class="input-row">
+                            <label>Phone <span>*</span></label>
+                            <input type="tel" placeholder="+1 555 123 4567" value="+1 (415) 555-9876" required>
+                        </div>
+                        <div class="input-row">
+                            <label>Tax ID / VAT (optional)</label>
+                            <input type="text" placeholder="12-3456789" value="98-7654321">
+                        </div>
+                    </div>
+
+                    <div class="input-row">
+                        <label>Street address <span>*</span></label>
+                        <input type="text" placeholder="Street, P.O. Box" value="455 Market St, Suite 1200" required>
+                    </div>
+
+                    <div class="half-grid">
+                        <div class="input-row">
+                            <label>City <span>*</span></label>
+                            <input type="text" placeholder="City" value="San Francisco" required>
+                        </div>
+                        <div class="input-row">
+                            <label>State / Province</label>
+                            <input type="text" placeholder="State" value="CA">
+                        </div>
+                    </div>
+
+                    <div class="half-grid">
+                        <div class="input-row">
+                            <label>Postal code <span>*</span></label>
+                            <input type="text" placeholder="e.g. 94105" value="94105" required>
+                        </div>
+                        <div class="input-row">
+                            <label>Country <span>*</span></label>
+                            <select required>
+                                <option value="">-- select --</option>
+                                <option value="US" selected>United States</option>
+                                <option value="CA">Canada</option>
+                                <option value="GB">United Kingdom</option>
+                                <option value="DE">Germany</option>
+                                <option value="FR">France</option>
+                                <option value="JP">Japan</option>
+                                <option value="AU">Australia</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="input-row">
+                        <label>Additional instructions (pickup)</label>
+                        <textarea placeholder="Gate code, floor, notes for courier...">Leave with reception • Ring bell 3</textarea>
+                    </div>
+
+                    <div class="checkbox-line">
+                        <input type="checkbox" id="saveSender" checked>
+                        <label for="saveSender">Save sender details for next order</label>
+                    </div>
+                    <div class="small-note">ⓘ your return address will be pre-filled later</div>
+                </div>
+
+                <!-- ========== RECEIVER SECTION (all details) ========= -->
+                <div class="section">
+                    <div class="section-header">
+                        <i>📥</i> Receiver information
+                    </div>
+
+                    <div class="input-row">
+                        <label>Full name / company <span>*</span></label>
+                        <input type="text" placeholder="e.g. Jane Reyes" value="Sarah Voss / Voss Design" required>
+                    </div>
+
+                    <div class="input-row">
+                        <label>Email address <span>*</span></label>
+                        <input type="email" placeholder="receiver@example.com" value="s.voss@vossdesign.com" required>
+                    </div>
+
+                    <div class="half-grid">
+                        <div class="input-row">
+                            <label>Phone <span>*</span></label>
+                            <input type="tel" placeholder="+1 555 765 4321" value="+1 (212) 555-3322" required>
+                        </div>
+                        <div class="input-row">
+                            <label>Tax ID (if business)</label>
+                            <input type="text" placeholder="optional" value="97-3456789">
+                        </div>
+                    </div>
+
+                    <div class="input-row">
+                        <label>Street address <span>*</span></label>
+                        <input type="text" placeholder="Address line" value="200 Broadway, 5th floor" required>
+                    </div>
+
+                    <div class="half-grid">
+                        <div class="input-row">
+                            <label>City <span>*</span></label>
+                            <input type="text" placeholder="City" value="New York" required>
+                        </div>
+                        <div class="input-row">
+                            <label>State / Province</label>
+                            <input type="text" placeholder="State" value="NY">
+                        </div>
+                    </div>
+
+                    <div class="half-grid">
+                        <div class="input-row">
+                            <label>Postal code <span>*</span></label>
+                            <input type="text" placeholder="e.g. 10038" value="10038" required>
+                        </div>
+                        <div class="input-row">
+                            <label>Country <span>*</span></label>
+                            <select required>
+                                <option value="">-- select --</option>
+                                <option value="US" selected>United States</option>
+                                <option value="CA">Canada</option>
+                                <option value="GB">United Kingdom</option>
+                                <option value="DE">Germany</option>
+                                <option value="FR">France</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="input-row">
+                        <label>Delivery notes (optional)</label>
+                        <textarea placeholder="e.g. call on arrival, suite number...">Use freight elevator • Call 10min before</textarea>
+                    </div>
+
+                    <div class="checkbox-line">
+                        <input type="checkbox" id="notifyReceiver" checked>
+                        <label for="notifyReceiver">Notify receiver by email when shipped</label>
+                    </div>
+                    <div class="small-note">ⓘ receiver will get tracking link</div>
+                </div>
+
+                <!-- ========== SHIPMENT META (ORDER INFO) ========= -->
+                <div class="order-meta">
+                    <div class="meta-item">
+                        <label>📅 Ship date</label>
+                        <input type="date" value="2025-05-22">
+                    </div>
+                    <div class="meta-item">
+                        <label>📦 Package type</label>
+                        <select>
+                            <option>Parcel (standard)</option>
+                            <option selected>Parcel (express)</option>
+                            <option>Documents</option>
+                            <option>Pallet</option>
+                            <option>Furniture</option>
+                        </select>
+                    </div>
+                    <div class="meta-item">
+                        <label>⚖️ Weight (lbs)</label>
+                        <input type="number" step="0.1" value="4.5" style="min-width:100px">
+                    </div>
+                    <div class="meta-item">
+                        <label>📏 Dimensions (in)</label>
+                        <input type="text" placeholder="LxWxH" value="12x9x6">
+                    </div>
+                </div>
+
+                <!-- optional special field: order reference (often required) -->
+                <div style="grid-column: 1/-1; display: flex; gap: 1.5rem; background: #f1f7fd; border-radius: 1.6rem; padding: 0.8rem 2rem; align-items: center;">
+                    <div style="display: flex; align-items: center; gap: 1rem; flex-wrap: wrap; width: 100%;">
+                        <span style="font-weight:500; color:#1d4f70;">🔖 order reference / PO</span>
+                        <input type="text" placeholder="internal ref, PO number" style="flex:2; min-width:200px; border: 1px solid #c2d7ec; border-radius: 30px; padding: 0.6rem 1.4rem;" value="PO-2025-0842">
+                        <span style="color:#4e7188; margin-left:auto; font-size:0.9rem;">Insurance: <strong>$1,500</strong></span>
+                    </div>
+                </div>
+
+                <!-- action buttons -->
+                <div class="action-buttons">
+                    <button class="btn" type="reset">⟲ Clear fields</button>
+                    <button class="btn btn-primary" type="submit">✈️ Register order</button>
+                </div>
+            </div><!-- end form-grid -->
+        </form>
+
+        <hr>
+        <div style="display: flex; gap: 2rem; font-size:0.85rem; color:#57758b; justify-content: center;">
+            <span>✓ all sender details captured</span>
+            <span>✓ all receiver details captured</span>
+            <span>📮 order registration ready</span>
+        </div>
+    </div><!-- end order-card -->
+
+    <!-- simple explanation: no external deps, all icons are emoji / text -->
+</body>
+</html>

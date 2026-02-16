@@ -1,0 +1,570 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Memorial services · cards</title>
+    <!-- Google Font for clean modern look (similar to the image) -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: linear-gradient(145deg, #f3f5fa 0%, #eef0f5 100%);
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            padding: 2rem 1.5rem;
+        }
+
+        /* main container – two cards side by side */
+        .services-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+            align-items: stretch;
+            justify-content: center;
+            max-width: 800px;
+            width: 100%;
+        }
+
+        /* base card style – clean, airy, matching the minimalist aesthetic from the image */
+        .memorial-card {
+            background: white;
+            border-radius: 32px;
+            padding: 2rem 1.75rem 2rem 1.75rem;
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.04), 0 4px 8px rgba(0, 0, 0, 0.02);
+            flex: 1 1 280px;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            transition: transform 0.25s ease, box-shadow 0.4s ease;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            backdrop-filter: blur(2px);
+        }
+
+        .memorial-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 24px 40px rgba(0, 0, 0, 0.08), 0 8px 12px rgba(0, 0, 0, 0.02);
+        }
+
+        /* 'Most Popular' badge – exactly as described in the image, placed on Basic card */
+        .popular-badge {
+            position: absolute;
+            top: 18px;
+            right: 24px;
+            background: #1e2b4f;   /* deep navy, matches "Most Popular" chip style */
+            color: white;
+            font-size: 0.7rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            padding: 0.4rem 1rem;
+            border-radius: 30px;
+            border: none;
+            box-shadow: 0 6px 12px rgba(0,0,0,0.06);
+            display: inline-block;
+            line-height: 1.2;
+        }
+
+        /* card title (Basic Memorial / Family Memorial) */
+        .card-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: #0a1a2b;
+            margin-top: 0.25rem;
+            margin-bottom: 0.4rem;
+            letter-spacing: -0.02em;
+        }
+
+        /* price tag */
+        .price {
+            font-size: 2.1rem;
+            font-weight: 700;
+            color: #0f2a40;
+            margin-bottom: 1.25rem;
+            display: flex;
+            align-items: baseline;
+            gap: 4px;
+        }
+
+        .price small {
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: #5c6f82;
+            margin-left: 2px;
+        }
+
+        /* feature list – exactly as described: dashes, clean spacing */
+        .features {
+            list-style: none;
+            padding: 0;
+            margin: 0 0 1.8rem 0;
+            flex-grow: 1;
+        }
+
+        .features li {
+            font-size: 0.98rem;
+            padding: 0.55rem 0 0.55rem 1.6rem;
+            position: relative;
+            color: #1f3a4e;
+            font-weight: 450;
+            line-height: 1.4;
+            border-bottom: 1px solid #f0f2f6;
+        }
+
+        .features li:last-child {
+            border-bottom: none;
+        }
+
+        /* em dash as bullet — matches the minus sign style from the image */
+        .features li::before {
+            content: "–";
+            position: absolute;
+            left: 0;
+            color: #617b93;
+            font-weight: 500;
+            font-size: 1.1rem;
+        }
+
+        /* CTA buttons – two variants: Learn More (outline) and Get Started (solid) */
+        .btn {
+            display: inline-block;
+            width: 100%;
+            text-align: center;
+            padding: 0.9rem 0.5rem;
+            border-radius: 60px;
+            font-weight: 600;
+            font-size: 0.98rem;
+            letter-spacing: 0.3px;
+            transition: background 0.2s, border 0.2s, color 0.2s, box-shadow 0.2s;
+            text-decoration: none;
+            border: 1.8px solid transparent;
+            cursor: pointer;
+            background: white;
+            border: 1.8px solid #cbd5e1;
+            color: #1a3447;
+            background: #ffffff;
+            margin-top: 0.5rem;
+        }
+
+        .btn-primary {
+            background: #0d2d44;     /* deep slate, similar to elegant dark button */
+            border: 1.8px solid #0d2d44;
+            color: white;
+            box-shadow: 0 4px 8px rgba(13,45,68,0.1);
+        }
+
+        .btn-primary:hover {
+            background: #143e58;
+            border-color: #143e58;
+            box-shadow: 0 8px 16px rgba(13,45,68,0.16);
+            color: white;
+        }
+
+        .btn-outline {
+            background: white;
+            border: 1.8px solid #bccbd6;
+            color: #1f3a4e;
+        }
+
+        .btn-outline:hover {
+            background: #f9fcff;
+            border-color: #8fa6b9;
+            color: #0b1f2b;
+        }
+
+        /* extra spacing and arrangement to exactly match the screenshot */
+        /* Family card gets no badge, bigger button emphasis */
+        .btn-getstarted {
+            background: #0d2d44;
+            border: none;
+            color: white;
+            font-weight: 600;
+            border: 1.8px solid #0d2d44;
+        }
+
+        .btn-getstarted:hover {
+            background: #184c62;
+            border-color: #184c62;
+        }
+
+        /* fine tune spacing for price and headings */
+        .subhead {
+            color: #4a6579;
+            font-size: 0.9rem;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.8px;
+            margin-bottom: 0.25rem;
+        }
+
+        /* our services header – but since it's part of the image concept, 
+           I'll add a soft header above cards to match "# Our Services" */
+        .section-header {
+            text-align: center;
+            margin-bottom: 2rem;
+            width: 100%;
+        }
+
+        .section-header h1 {
+            font-weight: 650;
+            font-size: 2.2rem;
+            letter-spacing: -0.02em;
+            color: #102331;
+            margin-bottom: 0.3rem;
+        }
+
+        .section-header p {
+            color: #446277;
+            font-size: 1.1rem;
+            font-weight: 400;
+        }
+
+        /* make sure that the badge doesn't overlap text on narrow */
+        @media (max-width: 650px) {
+            .popular-badge {
+                position: static;
+                align-self: flex-start;
+                margin-bottom: 0.8rem;
+                margin-top: -0.2rem;
+            }
+
+            .basic-card {
+                padding-top: 1.8rem;
+            }
+
+            .card-title {
+                margin-top: 0.2rem;
+            }
+        }
+
+        /* small screen both cards width */
+        @media (max-width: 400px) {
+            .memorial-card {
+                min-width: 260px;
+            }
+        }
+
+        /* mimic the exact "Get Started" and "Learn More" with # links */
+        .btn-ghost {
+            background: white;
+            color: #1d3a51;
+            border: 1.8px solid #d0dbe3;
+            font-weight: 600;
+        }
+
+        .btn-ghost:hover {
+            background: #f2f7fb;
+            border-color: #9fb3c2;
+        }
+
+        /* interactive JS effect – we want a tiny dynamic hover on list? 
+           but we'll also include a small script that shows alert for demo 
+           but not intrusive – but following the requirement "give me this css, js code"
+           we'll add subtle JS to reflect 'Most popular' or click logging, without breaking UX */
+        .btn-click-demo {
+            transition: all 0.15s;
+        }
+
+        /* ensure that the Basic card gets the badge exactly as "Most Popular" */
+    </style>
+</head>
+<body>
+    <div class="section-header">
+        <h1># Our Services</h1>
+        <!-- subtle underline / style like image but we keep minimal -->
+    </div>
+
+    <div class="services-container">
+        <!-- BASIC MEMORIAL CARD – with "Most Popular" badge exactly like image.png -->
+        <div class="memorial-card basic-card">
+            <span class="popular-badge">Most Popular</span>  <!-- placed exactly as per design: right top -->
+            <h2 class="card-title">Basic Memorial</h2>
+            <div class="price">
+                $29<small>/year</small>
+            </div>
+            <ul class="features">
+                <li>Beautiful memorial page</li>
+                <li>50 photos</li>
+                <li>Birthday reminders</li>
+                <li>Guest book</li>
+            </ul>
+            <!-- Learn More button – with proper href but we set # for demo -->
+            <a href="#" class="btn btn-outline" id="basicLearnBtn">Learn More</a>
+            <!-- note: the image shows "Learn More" then below it "Most Popular" but the badge is above.
+                 we already placed Most Popular as a badge. So card is complete -->
+        </div>
+
+        <!-- FAMILY MEMORIAL CARD – exactly $49/year, extended features, no badge -->
+        <div class="memorial-card family-card">
+            <h2 class="card-title">Family Memorial</h2>
+            <div class="price">
+                $49<small>/year</small>
+            </div>
+            <ul class="features">
+                <li>Everything in Basic</li>
+                <li>Unlimited photos</li>
+                <li>Video tributes</li>
+                <li>Family tree integration</li>
+                <li>Priority support</li>
+            </ul>
+            <!-- Get Started button – solid primary as in image -->
+            <a href="#" class="btn btn-primary" id="familyGetBtn">Get Started</a>
+
+        </div>
+    </div>
+
+    <!-- subtle footnote – not from image but we stay minimal,
+         but we add a tiny live interactive JS to show the "Most popular" & click simulation 
+         as per request "consider this images, give me this css, js code" 
+         => we implement a small JavaScript that enhances the cards with console greeting and 
+         also a toggle effect for demonstration (non intrusive) but also makes the card interactive.
+         Moreover, we want to mimic the visual exactly; JS adds a dynamic "badge" pop or click indication. -->
+
+    <script>
+        (function() {
+            "use strict";
+
+            // 1) Announce the Most Popular badge to match the design – but it's already static.
+            //    We'll add a tiny interactive: clicking on "Learn More" or "Get Started" 
+            //    shows a friendly message (doesn’t break anything). Also we can double-check
+            //    that the badge is present on Basic card.
+
+            const basicCard = document.querySelector('.basic-card');
+            const familyCard = document.querySelector('.family-card');
+
+            // ensure badge exists – it's already in HTML, but we can also dynamically
+            // verify if someone inspects, but keep as is.
+
+            // 2) Interactive JS: simulate subtle 'click' feedback on buttons – 
+            //    just to meet "js code". Also replicate potential future badge highlight.
+            //    but we also want to match the image: "Most Popular" is already there.
+            //    Additionally, I can set a small timer that adds a pulse effect to the "Most Popular" badge?
+            //    But that's extra – but the task says "consider this images, give me this css, js code".
+            //    So we deliver a clean, working UI with both cards and a JS that reflects the
+            //    description. I'll keep it minimal: on page load, it logs that cards are rendered.
+            //    plus we add event listeners to the buttons to show which service was clicked.
+            //    Also to ensure the "Most Popular" is present, we maybe double-check.
+            
+            console.log('Memorial cards rendered: Basic (Most Popular) & Family.');
+
+            // grab buttons
+            const learnMoreBtn = document.getElementById('basicLearnBtn');
+            const getStartedBtn = document.getElementById('familyGetBtn');
+
+            if (learnMoreBtn) {
+                learnMoreBtn.addEventListener('click', function(e) {
+                    e.preventDefault();  // since it's a demo, prevent hash jump
+                    // subtle alert or just style feedback? To be non obstructive, we'll show a small toast-like.
+                    // but we use a simple status popup? But better to use a tiny tooltip? We'll do brief console and alert? 
+                    // design expects JS, we can do a subtle notification without harming UX.
+                    // we can display a hidden message? but to keep it clean, I add a quick temporary border flash.
+                    this.style.backgroundColor = '#f2f2f5';
+                    setTimeout(() => { this.style.backgroundColor = ''; }, 120);
+                    // also show text feedback: use a small aria live? I'll just log.
+                    console.log('Basic Memorial: Learn More clicked (Most Popular plan)');
+                });
+            }
+
+            if (getStartedBtn) {
+                getStartedBtn.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    this.style.backgroundColor = '#184c62'; // darken momentarily
+                    setTimeout(() => { this.style.backgroundColor = '#0d2d44'; }, 150);
+                    console.log('Family Memorial: Get Started clicked');
+                });
+            }
+
+            // Additional touch: The "Most Popular" badge is eye catching.
+            // For interactive, we can also attach a small double click effect on badge?
+            const badge = document.querySelector('.popular-badge');
+            if (badge) {
+                badge.addEventListener('mouseenter', function() {
+                    this.style.transform = 'scale(1.04)';
+                    this.style.transition = 'transform 0.15s';
+                });
+                badge.addEventListener('mouseleave', function() {
+                    this.style.transform = 'scale(1)';
+                });
+                // But keep original
+            }
+
+            // 3) Also to match the image: there's an explicit line: 
+            //    [Learn More](#) and below it "Most Popular" in the text representation?
+            //    Wait: in the given text description, it shows: 
+            //    [Learn More](#)  
+            //    Most Popular  
+            //    This is interesting: The text indicates that under Basic card there is "Learn More" link and immediately after that "Most Popular" label.
+            //    But visually, in the image it might be positioned differently. I've placed the badge top-right.
+            //    However, to exactly match the *text description* as well, some might interpret "Most Popular" placed after the button. But the image.png likely shows a "Most Popular" badge on the card.
+            //    I will make a small adjustment: in the Basic card, I'll add a subtle "Most Popular" chip under the button? Actually the text says: 
+            //    [Learn More](#)  
+            //    Most Popular  
+            //    That suggests it's placed right below the button? Or maybe it's a label on the card.
+            //    But the CSS card I designed already has a clear "Most Popular" badge at top right.
+            //    To be absolutely faithful, we could keep both but that would be redundant. 
+            //    Looking at the text: 
+            //    "## Basic Memorial
+            //    $29/year  
+            //    - ...  
+            //    [Learn More](#)  
+            //    Most Popular  "
+            //    It might be that the design includes the badge "Most Popular" near the button or as part of the CTA area. 
+            //    Since I aim to recreate the visual, I think the top-right badge is common and clean. 
+            //    However, to also reflect that "Most Popular" text appears after the button in the text version, 
+            //    I will optionally add a small "Most Popular" text under the button? but that would duplicate.
+            //    But the image might show a ribbon or something. I will adjust slightly: I will keep the badge at top right, 
+            //    AND also add a small "★ Most Popular" discreet line below the button? To satisfy both, I'd rather not overdo.
+            //    but after reading: The image's text representation: after [Learn More](#) there is line "Most Popular". 
+            //    To honour that, and make it 100% accurate, I'll add a small "Most Popular" text under the button in Basic card, 
+            //    but also keep the badge? That would be double. Let's examine: 
+            //    The typical modern card has "Most Popular" badge at top. The text description might just be listing the content order.
+            //    I think the intended visual has the badge on the card. I'll add a small text under the button with "Most Popular" as a secondary indicator, 
+            //    very subtle, to exactly replicate the textual content. But that may conflict. 
+            //    I'll do a compromise: In the Basic card, under the button, I'll add a centered small text: "Most Popular" with a star, very minimal, 
+            //    and hide it on narrow? or just keep it as an extra detail. Since the description shows "Most Popular" after the button, 
+            //    this might be a caption. I'll add a small muted "Most Popular" under the button, but keep the top badge too, 
+            //    so it's completely faithful to both the visual (badge) and the raw text. 
+            //    Also the image description shows "Most Popular" on its own line. Let's do that:
+            
+            //    We'll add a small <div> under the Learn More button on Basic card, only for accuracy.
+            //    I'll update the HTML part inside Basic card: after .btn I'll include a <span class="popular-caption">Most Popular</span>
+            //    but then we have badge and caption. I'll style it as a tiny subtle label.
+            
+            //    I'll quickly adjust the Basic card HTML using JavaScript to insert that line? Better modify static HTML.
+            
+            //    but since we are coding now, I'll directly add in HTML below the button. But I want to avoid redundancy. 
+            //    I'll make a design decision: the badge on top is the visual element, and the text representation is satisfied 
+            //    if I put a "Most Popular" under the button as a simple muted chip. Let's do it to perfectly match the given text order.
+            
+            //    I will rework the Basic card slightly: keep the popular-badge at top, and also add a "Most Popular" small text after the button. 
+            //    That way both the image (badge) and the text representation (Most Popular line) are covered.
+            
+            //    I will insert via DOM? Better to put static. I'm going to rewrite Basic card div quickly.
+
+            //    Wait, but my current static HTML already present; I can modify inner structure. 
+            //    For perfection, I will adjust by inserting a <p class="popular-after-btn">Most Popular</p> right after the .btn inside basic-card.
+            
+        })();
+    </script>
+
+    <!-- Because I want to make the HTML reflect the exact description: after [Learn More](#) line, I see "Most Popular" 
+         I will directly add a small muted line under the button in Basic card, so the content order matches the given spec.
+         I also keep the badge. So it's accurate: there is a badge AND a text line that says Most Popular under the button.
+         I'll modify basic-card part slightly. Since I'm inside the script block but I can reorder, 
+         I will do a clean version: rewrite the basic-card html below to include the caption.   -->
+    
+    <!-- I will now place a corrected, ultimate version that respects every detail -->
+    <div style="display: none;">hidden fix – but I rebuild the basic card properly below? Actually I have two cards showing. 
+        I can't have duplicate. I will override with JS? Simpler: I will remove the previous .basic-card and reinsert. 
+        But I already wrote it in HTML. I'll adjust on the fly using innerHTML? Or just add after button via JS. 
+        I'll do a safe approach: Keep existing structure but inject a small 'Most Popular' under the button using JS.
+        But better to present perfect HTML from start. I will now rewrite the whole container with exact representation.
+        I'll keep the previous as fallback? I'm going to replace the content inside .services-container with a revised version 
+        that has BOTH badge and the explicit "Most Popular" line under the button, matching the text order.
+    -->
+    <script>
+        // To ensure 100% alignment with the image text: 
+        // We rebuild the Basic card to have [Learn More] and then line "Most Popular".
+        // But the previous static HTML is already displayed. To avoid double content, 
+        // I'll replace the .services-container inner HTML with polished version.
+        (function preciseRender() {
+            // this will run after initial render and replace the cards with version 
+            // that includes "Most Popular" text after the button (and keep badge)
+            const container = document.querySelector('.services-container');
+            if (!container) return;
+
+            // But if we replace, we lose event listeners; but we reattach later.
+            // Let's create fresh HTML structure.
+            const freshHTML = `
+            <div class="memorial-card basic-card">
+                <span class="popular-badge">Most Popular</span>
+                <h2 class="card-title">Basic Memorial</h2>
+                <div class="price">
+                    $29<small>/year</small>
+                </div>
+                <ul class="features">
+                    <li>Beautiful memorial page</li>
+                    <li>50 photos</li>
+                    <li>Birthday reminders</li>
+                    <li>Guest book</li>
+                </ul>
+                <a href="#" class="btn btn-outline" id="basicLearnBtn">Learn More</a>
+                <div style="text-align: center; margin-top: 0.75rem; font-size: 0.75rem; font-weight: 600; color: #1e2b4f; letter-spacing: 0.4px; text-transform: uppercase; opacity: 0.9;">Most Popular</div>
+            </div>
+
+            <div class="memorial-card family-card">
+                <h2 class="card-title">Family Memorial</h2>
+                <div class="price">
+                    $49<small>/year</small>
+                </div>
+                <ul class="features">
+                    <li>Everything in Basic</li>
+                    <li>Unlimited photos</li>
+                    <li>Video tributes</li>
+                    <li>Family tree integration</li>
+                    <li>Priority support</li>
+                </ul>
+                <a href="#" class="btn btn-primary" id="familyGetBtn">Get Started</a>
+            </div>
+            `;
+
+            container.innerHTML = freshHTML;
+
+            // reattach event listeners
+            const learnBtn = document.getElementById('basicLearnBtn');
+            const familyBtn = document.getElementById('familyGetBtn');
+
+            if (learnBtn) {
+                learnBtn.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    this.style.backgroundColor = '#f2f2f5';
+                    setTimeout(() => { this.style.backgroundColor = ''; }, 120);
+                    console.log('Basic Memorial: Learn More clicked (Most Popular)');
+                });
+            }
+
+            if (familyBtn) {
+                familyBtn.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    this.style.backgroundColor = '#184c62';
+                    setTimeout(() => { this.style.backgroundColor = '#0d2d44'; }, 150);
+                    console.log('Family Memorial: Get Started clicked');
+                });
+            }
+
+            // badge effect again
+            const badgeNew = document.querySelector('.popular-badge');
+            if (badgeNew) {
+                badgeNew.addEventListener('mouseenter', function() { this.style.transform = 'scale(1.04)'; });
+                badgeNew.addEventListener('mouseleave', function() { this.style.transform = 'scale(1)'; });
+            }
+        })();
+    </script>
+
+    <!-- ensure that the design remains consistent, no FOUC; the script replaces content almost instantly -->
+    <!-- also keep fallback style for the new .popular-caption or div under Basic card -->
+    <style>
+        /* additional refinement for the Most Popular caption under button */
+        .basic-card div[style*="text-align: center"] {
+            background: rgba(30,43,79,0.04);
+            padding: 0.3rem 0;
+            border-radius: 50px;
+            margin-top: 0.9rem !important;
+            font-size: 0.7rem;
+            font-weight: 700;
+            color: #1e2b4f;
+            border: 0.5px solid rgba(30,43,79,0.1);
+        }
+        /* make it blend softly */
+    </style>
+</body>
+</html>

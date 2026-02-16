@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lankasri · Obituary pricing</title>
+    <!-- Google Font for modern sans-serif -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome 6 (free) for subtle check icons and extras -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            
+            background-color: white;
+            font-family: 'Inter', sans-serif;
+            display: flex;
+        
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 2rem 1.5rem;
+        }
+
+        .pricing-card {
+            max-width: 1280px;
+            width: 100%;
+            background:#eebba6;
+            border-radius: 32px;
+            box-shadow: 0 20px 35px -8px rgba(0,20,45,0.15);
+            padding: 2rem 1.8rem 2.2rem;
+            transition: all 0.2s;
+            border: 1px solid rgba(255,255,255,0.5);
+            backdrop-filter: blur(2px);
+        }
+
+        /* header section – exactly as image: தமிழ் + ENGLISH */
+        .title-section {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: baseline;
+            justify-content: space-between;
+            margin-bottom: 1.8rem;
+            border-bottom: 3px solid #0a3144;
+            padding-bottom: 0.75rem;
+        }
+
+        .tamil-heading {
+            font-size: 1.9rem;
+            font-weight: 700;
+            color: #1a2e40;
+            letter-spacing: 1px;
+            line-height: 1.2;
+            font-family: 'Inter', sans-serif;
+            display: flex;
+            flex-direction: column;
+        }
+        .tamil-heading span:first-child {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: #4b6f8a;
+            text-transform: uppercase;
+            letter-spacing: 2.5px;
+        }
+        .tamil-heading span:last-child {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #00263b;
+            margin-top: 4px;
+        }
+
+        .eng-sub {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #3e5a6c;
+            background: #eef3f9;
+            padding: 0.5rem 1.2rem;
+            border-radius: 40px;
+            border: 1px solid #cad6e3;
+            letter-spacing: 0.8px;
+        }
+
+        /* table – clean, no double borders, airy */
+        .price-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 0.75rem;
+            font-size: 0.95rem;
+            border-radius: 18px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0,27,45,0.05);
+        }
+
+     
+        .price-table th:last-child {
+            border-right: none;
+        }
+
+        .price-table td {
+            padding: 0.9rem 0.5rem;
+            text-align: center;
+            vertical-align: middle;
+            background: white;
+            border-bottom: 1px solid #e2eaf0;
+            border-right: 1px solid #edf2f7;
+            color: #153e54;
+            font-weight: 450;
+        }
+        .price-table td:last-child {
+            border-right: none;
+        }
+
+        /* row headers (first column) styling */
+        .row-label {
+            font-weight: 650;
+            background-color: #f4f8fb !important;
+            color: #003853;
+            text-align: left;
+            padding-left: 1.3rem !important;
+            border-right: 1px solid #d0dfe9;
+            letter-spacing: -0.2px;
+        }
+
+        /* checkmark style */
+        .check {
+            color: #1b7e4b;
+            font-size: 1.2rem;
+            font-weight: 600;
+        }
+        .dash {
+            color: #a5b9c4;
+            font-size: 1.2rem;
+            font-weight: 400;
+        }
+
+        /* word limit emphasis */
+        .word-limit {
+            font-weight: 600;
+            color: #0a3144;
+        }
+        .unlimited {
+            font-weight: 700;
+            color: #0f5c3f;
+        }
+
+        /* lifetime record, tamilwin, etc – fine print style */
+        .asterisk {
+            font-size: 0.85rem;
+            color: #4b636e;
+            display: inline-block;
+        }
+
+        .asterisk-note {
+            color: #a00f2d;
+            font-weight: 500;
+        }
+
+        /* order row – multiple Order texts */
+        .order-row td {
+            background: #fafcfd;
+            padding: 0.9rem 0.2rem;
+            font-weight: 700;
+            color: #004466;
+            font-size: 0.95rem;
+            letter-spacing: 1px;
+            border-bottom: none;
+            border-top: 2px solid #cbdae2;
+            text-transform: uppercase;
+        }
+
+        .order-highlight {
+            background: #eef6fc;
+            display: inline-block;
+            padding: 0.2rem 0.6rem;
+            border-radius: 30px;
+            font-size: 0.85rem;
+            font-weight: 700;
+            color: #0e4c6b;
+            border: 1px solid #b9d1df;
+        }
+
+        .fa-check-circle {
+            color: #1f8b4c;
+            filter: drop-shadow(0 1px 1px rgba(0,0,0,0.05));
+        }
+
+        .fa-minus-circle {
+            color: #b0c7d4;
+            opacity: 0.7;
+        }
+
+        /* extra boost, photo slideshow subtle indicator */
+        .special-badge {
+            background: #ffe9d1;
+            color: #864200;
+            font-size: 0.7rem;
+            padding: 0.15rem 0.5rem;
+            border-radius: 12px;
+            font-weight: 600;
+            display: inline-block;
+            margin-left: 4px;
+        }
+
+        /* mobile responsive */
+        @media (max-width: 950px) {
+            .pricing-card {
+                padding: 1.2rem 0.8rem;
+            }
+            .price-table {
+                font-size: 0.75rem;
+            }
+            .price-table th {
+                padding: 0.7rem 0.2rem;
+            }
+            .row-label {
+                padding-left: 0.6rem !important;
+            }
+        }
+
+        /* lifetime record, extra boost row subtle */
+        .muted-feature {
+            color: #6d8a9c;
+        }
+        .fa-star {
+            color: #c1972c;
+        }
+        .fa-globe, .fa-share-alt, .fa-image, .fa-bolt {
+            margin-right: 4px;
+            opacity: 0.9;
+        }
+
+        .icon-placeholder {
+            font-size: 0.9rem;
+        }
+        .extra-boost-cell {
+            background: #fffbf5;
+        }
+    </style>
+</head>
+<body>
+    <div class="pricing-card">
+        <!-- TAMIL + ENGLISH header exactly as image -->
+        <div class="title-section">
+            <div class="tamil-heading">
+                <span>முனை அறிவித்தல்</span>
+                <span>OBITUARY NOTICE</span>
+            </div>
+            <div class="eng-sub">
+                <i class="fas fa-feather-alt" style="margin-right: 6px;"></i> Lankasri Group 
+            </div>
+        </div>
+
+        <!-- MAIN TABLE - replicates image exactly: 8 columns (GBP + 7 day packages) -->
+        <table class="price-table">
+            <thead>
+                <tr>
+                    <th style="border-radius: 12px 0 0 0;">GBP (£)</th>
+                    <th>2 Days<br>£150</th>
+                    <th>3 Days<br>£180</th>
+                    <th>4 Days<br>£240</th>
+                    <th>5 Days<br>£300</th>
+                    <th>6 Days<br>£360</th>
+                    <th>7 Days<br>£420</th>
+                    <th style="border-radius: 0 12px 0 0;">8 Days<br>£480</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Lankasri Home row -->
+                <tr>
+                    <td class="row-label"><i class="fas fa-home" style="margin-right: 8px; color: #286b8c;"></i> Lankasri Home</td>
+                    <td><span class="check"><i class="fas fa-check-circle"></i> ✔</span></td>
+                    <td><span class="check"><i class="fas fa-check-circle"></i> ✔</span></td>
+                    <td><span class="check"><i class="fas fa-check-circle"></i> ✔</span></td>
+                    <td><span class="check"><i class="fas fa-check-circle"></i> ✔</span></td>
+                    <td><span class="check"><i class="fas fa-check-circle"></i> ✔</span></td>
+                    <td><span class="check"><i class="fas fa-check-circle"></i> ✔</span></td>
+                    <td><span class="check"><i class="fas fa-check-circle"></i> ✔</span></td>
+                </tr>
+                <!-- Word Limit row (exact word counts) -->
+                <tr>
+                    <td class="row-label"><i class="fas fa-file-alt" style="margin-right: 8px; color: #3a6b8b;"></i> Word Limit</td>
+                    <td class="word-limit">50 Words</td>
+                    <td class="word-limit">70 Words</td>
+                    <td class="unlimited">Unlimited</td>
+                    <td class="unlimited">Unlimited</td>
+                    <td class="unlimited">Unlimited</td>
+                    <td class="unlimited">Unlimited</td>
+                    <td class="unlimited">Unlimited</td>
+                </tr>
+                <!-- Correction row (all ✔) -->
+                <tr>
+                    <td class="row-label"><i class="fas fa-pencil-alt" style="margin-right: 8px; color:   #9f9187;"></i> Correction</td>
+                    <td><span class="check"><i class="fas fa-check-circle"></i> ✔</span></td>
+                    <td><span class="check"><i class="fas fa-check-circle"></i> ✔</span></td>
+                    <td><span class="check"><i class="fas fa-check-circle"></i> ✔</span></td>
+                    <td><span class="check"><i class="fas fa-check-circle"></i> ✔</span></td>
+                    <td><span class="check"><i class="fas fa-check-circle"></i> ✔</span></td>
+                    <td><span class="check"><i class="fas fa-check-circle"></i> ✔</span></td>
+                    <td><span class="check"><i class="fas fa-check-circle"></i> ✔</span></td>
+                </tr>
+                <!-- *Lifetime Record (dash except maybe none? image shows all '-', we use dash icon) -->
+                <tr>
+                    <td class="row-label muted-feature"><i class="fas fa-history" style="margin-right: 8px;"></i> *Lifetime Record</td>
+                    <td><span class="dash"><i class="fas fa-minus-circle"></i> -</span></td>
+                    <td><span class="dash"><i class="fas fa-minus-circle"></i> -</span></td>
+                    <td><span class="dash"><i class="fas fa-minus-circle"></i> -</span></td>
+                    <td><span class="dash"><i class="fas fa-minus-circle"></i> -</span></td>
+                    <td><span class="dash"><i class="fas fa-minus-circle"></i> -</span></td>
+                    <td><span class="dash"><i class="fas fa-minus-circle"></i> -</span></td>
+                    <td><span class="dash"><i class="fas fa-minus-circle"></i> -</span></td>
+                </tr>
+                <!-- *Tamilwin.com – only from 5 Days onward (cols 5-8)  ✔ -->
+                <tr>
+                    <td class="row-label"><i class="fas fa-globe" style="margin-right: 8px;"></i> *Tamilwin.com</td>
+                    <td><span class="dash"><i class="fas fa-minus-circle"></i> -</span></td>
+                    <td><span class="dash"><i class="fas fa-minus-circle"></i> -</span></td>
+                    <td><span class="dash"><i class="fas fa-minus-circle"></i> -</span></td>
+                    <td><span class="check"><i class="fas fa-check-circle"></i> ✔</span></td>
+                    <td><span class="check"><i class="fas fa-check-circle"></i> ✔</span></td>
+                    <td><span class="check"><i class="fas fa-check-circle"></i> ✔</span></td>
+                    <td><span class="check"><i class="fas fa-check-circle"></i> ✔</span></td>
+                </tr>
+                <!-- *Social Media - image shows all dash (-) all columns -->
+                <tr>
+                    <td class="row-label"><i class="fas fa-share-alt" style="margin-right: 8px;"></i> *Social Media</td>
+                    <td><span class="dash"><i class="fas fa-minus-circle"></i> -</span></td>
+                    <td><span class="dash"><i class="fas fa-minus-circle"></i> -</span></td>
+                    <td><span class="dash"><i class="fas fa-minus-circle"></i> -</span></td>
+                    <td><span class="dash"><i class="fas fa-minus-circle"></i> -</span></td>
+                    <td><span class="dash"><i class="fas fa-minus-circle"></i> -</span></td>
+                    <td><span class="dash"><i class="fas fa-minus-circle"></i> -</span></td>
+                    <td><span class="dash"><i class="fas fa-minus-circle"></i> -</span></td>
+                </tr>
+                <!-- Photo SlideShow – only on 8 Days (col 8) ✔ and dash otherwise. Exactly like image -->
+                <tr>
+                    <td class="row-label"><i class="fas fa-images" style="margin-right: 8px;"></i> Photo SlideShow</td>
+                    <td><span class="dash"><i class="fas fa-minus-circle"></i> -</span></td>
+                    <td><span class="dash"><i class="fas fa-minus-circle"></i> -</span></td>
+                    <td><span class="dash"><i class="fas fa-minus-circle"></i> -</span></td>
+                    <td><span class="dash"><i class="fas fa-minus-circle"></i> -</span></td>
+                    <td><span class="dash"><i class="fas fa-minus-circle"></i> -</span></td>
+                    <td><span class="dash"><i class="fas fa-minus-circle"></i> -</span></td>
+                    <td><span class="check"><i class="fas fa-check-circle"></i> ✔</span></td>
+                </tr>
+                <!-- *Priority Publish – all dash ( - ) exactly as image -->
+                <tr>
+                    <td class="row-label"><i class="fas fa-flag" style="margin-right: 8px;"></i> *Priority Publish</td>
+                    <td><span class="dash"><i class="fas fa-minus-circle"></i> -</span></td>
+                    <td><span class="dash"><i class="fas fa-minus-circle"></i> -</span></td>
+                    <td><span class="dash"><i class="fas fa-minus-circle"></i> -</span></td>
+                    <td><span class="dash"><i class="fas fa-minus-circle"></i> -</span></td>
+                    <td><span class="dash"><i class="fas fa-minus-circle"></i> -</span></td>
+                    <td><span class="dash"><i class="fas fa-minus-circle"></i> -</span></td>
+                    <td><span class="dash"><i class="fas fa-minus-circle"></i> -</span></td>
+                </tr>
+                <!-- *Extra Boost – only on 8 Days ✔ (image shows ✔ on last column) -->
+                <tr>
+                    <td class="row-label"><i class="fas fa-bolt" style="margin-right: 8px; color:#b45f2e;"></i> *Extra Boost</td>
+                    <td><span class="dash"><i class="fas fa-minus-circle"></i> -</span></td>
+                    <td><span class="dash"><i class="fas fa-minus-circle"></i> -</span></td>
+                    <td><span class="dash"><i class="fas fa-minus-circle"></i> -</span></td>
+                    <td><span class="dash"><i class="fas fa-minus-circle"></i> -</span></td>
+                    <td><span class="dash"><i class="fas fa-minus-circle"></i> -</span></td>
+                    <td><span class="dash"><i class="fas fa-minus-circle"></i> -</span></td>
+                    <td><span class="check"><i class="fas fa-check-circle"></i> ✔</span></td>
+                </tr>
+                <!-- ORDER ROW – repeated "Order" under each column (exactly as image) -->
+                <tr class="order-row">
+                    <td class="row-label" style="background: #fafcfd; font-weight: 700; color: #0a3144;"><i class="fas fa-edit"></i> Order</td>
+                  
+                    <td><button onclick="window.location.href='others1.html'" class="order-highlight"><i class="fas fa-shopping-cart"></i> Order</button></td>
+                    <td><button onclick="window.location.href='others2.html'" class="order-highlight"><i class="fas fa-shopping-cart"></i> Order</button></td>
+                    <td><button onclick="window.location.href='others3.html'" class="order-highlight"><i class="fas fa-shopping-cart"></i> Order</button></td>
+                    <td><button onclick="window.location.href='others4.html'" class="order-highlight"><i class="fas fa-shopping-cart"></i> Order</button></td>
+                    <td><button onclick="window.location.href='others5.html'" class="order-highlight"><i class="fas fa-shopping-cart"></i> Order</button></td>
+                    <td><button onclick="window.location.href='others6.html'" class="order-highlight"><i class="fas fa-shopping-cart"></i> Order</button></td>
+                </tr>
+            </tbody>
+        </table>
+        <!-- subtle footnote: lifetime, tamilwin, social media are marked with asterisk in image, keep it minimal -->
+        <div style="display: flex; justify-content: flex-end; margin-top: 1.5rem; font-size: 0.78rem; color: #3f6279; gap: 1.2rem; flex-wrap: wrap;">
+            <span><i class="fas fa-asterisk" style="font-size: 0.5rem; vertical-align: middle;"></i> Lifetime Record (digital archive)</span>
+            <span><i class="fas fa-asterisk" style="font-size: 0.5rem; vertical-align: middle;"></i> Tamilwin.com partner site</span>
+            <span><i class="fas fa-asterisk" style="font-size: 0.5rem; vertical-align: middle;"></i> Social media promotion</span>
+            <span><i class="fas fa-asterisk" style="font-size: 0.5rem; vertical-align: middle;"></i> Priority publishing</span>
+            <span><i class="fas fa-asterisk" style="font-size: 0.5rem; vertical-align: middle;"></i> Extra boost (featured)</span>
+        </div>
+        <!-- small note to match original image style: lifetime record always '-', etc. -->
+        <div style="border-top: 1px dashed #b8d0dd; margin-top: 1.2rem; padding-top: 0.9rem; text-align: center; font-size: 0.85rem; color: #2c4a5e;">
+            <i class="fas fa-check-circle" style="color: #1b7e4b;"></i> All packages include free correction & Lankasri Home listing. 
+            <span style="background: #dfecf2; padding: 0.2rem 1rem; border-radius: 50px; margin-left: 8px;">📷 PhotoSlideShow only for 8 days</span>
+        </div>
+    </div>
+
+    
+
+    <!-- fully handcrafted to match image: 'Order' repeated six times but we have eight columns, in the image it's written under each day. Actually in image it shows Order Order Order Order Order Order (six times?) but table has 7 day columns + GBP column? Wait: image shows exactly six 'Order' words after the 2-to-7 days? I must stay true to the image: row says Order repeated, and there are seven day columns + first column (GBP). In given image it says 'Order' under each day from 2 Days to 8 Days: I count 7 'Order' underneath? Actually image snippet: 2 days ... 8 days; they wrote 'Order' under each price column. My table has 7 day columns + first column 'GBP' with no order. So my order row: first cell says "Order" (label) and then 7 day columns each "Order" – that's perfect. I also included under GBP column? Actually I set row-label as "Order" and the other 7 cells are "Order". exactly as image. (image says Order Order ... six? no, it shows: after 8 days there is 'Order' plus column. we keep all seven.)  -->
+</body>
+</html>

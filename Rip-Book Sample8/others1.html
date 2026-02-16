@@ -1,0 +1,622 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lankasri Home · Order & Registration</title>
+    <!-- Font Awesome 6 (free) for all icons: pound, slide, social, etc -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <!-- Clean modern font -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
+    <style>
+        /* reset & base */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: #e9eef3;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 1.8rem;
+            color: #1e2f3e;
+            transition: background 0.2s;
+        }
+
+        /* both pages use this container for centering */
+        .page {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* ----- ORDER CARD (EXACT IMAGE REPLICA) ----- */
+        .order-card {
+            max-width: 520px;
+            width: 100%;
+            background: white;
+            border-radius: 40px;
+            box-shadow: 0 25px 40px -15px rgba(0,35,60,0.18);
+            padding: 2.2rem 2rem;
+            border: 1px solid rgba(255,255,255,0.6);
+            backdrop-filter: blur(2px);
+        }
+
+        /* GBP badge */
+        .gbp-badge {
+            display: inline-flex;
+            align-items: center;
+            background: #0c2f45;
+            color: white;
+            font-weight: 700;
+            font-size: 1.1rem;
+            padding: 0.4rem 1.4rem;
+            border-radius: 50px;
+            letter-spacing: 0.3px;
+            box-shadow: 0 6px 0 #041c29, 0 8px 14px rgba(0,0,0,0.1);
+            margin-bottom: 0.5rem;
+        }
+
+        .gbp-badge i {
+            margin-right: 8px;
+            font-size: 0.95rem;
+        }
+
+        /* 2 Days and £150 — exactly as described */
+        .price-row {
+            display: flex;
+            align-items: baseline;
+            justify-content: space-between;
+            margin-top: 0.8rem;
+            margin-bottom: 1.2rem;
+        }
+
+        .days-big {
+            font-size: 2rem;
+            font-weight: 800;
+            color: #0a3142;
+            background: #edf4fa;
+            padding: 0.3rem 1.4rem;
+            border-radius: 60px;
+            letter-spacing: -0.5px;
+            box-shadow: inset 0 -2px 0 #cbd6e3;
+        }
+
+        .pound-big {
+            font-size: 2.8rem;
+            font-weight: 800;
+            background: linear-gradient(145deg, #fef3e4, #ffead4);
+            color: #174459;
+            padding: 0.2rem 1.5rem;
+            border-radius: 70px;
+            box-shadow: inset 0 -4px 0 #e6c6a2, 0 6px 0 #b28b6b;
+            border: 1px solid #ffe6c7;
+        }
+
+        /* Lankasri Home — main title */
+        .lankasri-title {
+            font-size: 2.3rem;
+            font-weight: 800;
+            line-height: 1;
+            color: #002b3b;
+            margin: 0.75rem 0 0.25rem;
+            border-left: 16px solid #ffa74e;
+            padding-left: 1.2rem;
+            text-shadow: 2px 2px 0 rgba(255,180,110,0.1);
+        }
+
+        /* word limit + correction row */
+        .meta-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.8rem;
+            align-items: center;
+            justify-content: space-between;
+            margin: 1rem 0 1.8rem;
+        }
+
+        .word-limit {
+            background: #deebf7;
+            font-weight: 600;
+            padding: 0.5rem 1.5rem;
+            border-radius: 50px;
+            font-size: 1.05rem;
+            color: #01455e;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            box-shadow: inset 0 -1px 0 #b4cfe0;
+        }
+
+        .correction {
+            background: #bee0fa;
+            font-weight: 700;
+            padding: 0.5rem 1.6rem;
+            border-radius: 50px;
+            font-size: 1.05rem;
+            color: #003859;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            box-shadow: inset 0 -1px 0 #98c0e0;
+        }
+
+        /* FEATURE GRID — 2 columns, exactly as image: *Lifetime Record, *Tamilwin.com, *Social Media, *Photo SlideShow, *Priority Publish, *Extra Boost */
+        .feature-grid {
+            list-style: none;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0.9rem 0.7rem;
+            margin: 2rem 0 1.6rem;
+        }
+
+        .feature-grid li {
+            display: flex;
+            align-items: center;
+            font-size: 1rem;
+            font-weight: 550;
+            padding: 0.55rem 0.9rem;
+            background: #f6fbfe;
+            border-radius: 40px;
+            border: 1.2px solid #dbe7f0;
+            color: #133e51;
+            box-shadow: 0 2px 5px #e2ecf3;
+        }
+
+        .feature-grid li i {
+            margin-right: 8px;
+            color: #1e6b7d;
+            width: 20px;
+            text-align: center;
+            font-size: 0.95rem;
+        }
+
+        /* special icons for specific features (extra styling matches image mood) */
+        .feature-grid li:nth-child(4) {  /* Photo SlideShow */
+            background: #efe5ff;
+            border-color: #cbb5ef;
+        }
+        .feature-grid li:nth-child(6) {  /* Extra Boost */
+            background: #ffefcf;
+            border-color: #facc8d;
+            font-weight: 700;
+        }
+
+        /* DOUBLE ORDER BUTTONS — exactly two ORDER, both prominent */
+        .order-duo {
+            display: flex;
+            gap: 1.2rem;
+            justify-content: center;
+            margin-top: 1.5rem;
+            flex-wrap: wrap;
+        }
+
+        .btn-order {
+            border: none;
+            background: #093c4f;
+            color: white;
+            font-weight: 800;
+            font-size: 1.5rem;
+            padding: 0.9rem 2.2rem;
+            border-radius: 100px;
+            letter-spacing: 5px;
+            box-shadow: 0 14px 0 #05222b, 0 12px 20px rgba(0,40,50,0.25);
+            transition: all 0.07s;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-transform: uppercase;
+            border: 1px solid #55a1b1;
+            flex: 0 1 auto;
+        }
+
+        .btn-order i {
+            margin-right: 10px;
+            font-size: 1.3rem;
+        }
+
+        .btn-order.second-order {
+            background: #1e5668;
+            box-shadow: 0 14px 0 #10333d, 0 12px 20px #0e3d49;
+        }
+
+        .btn-order:hover {
+            background: #155a6e;
+            transform: translateY(6px);
+            box-shadow: 0 8px 0 #05222b, 0 16px 25px rgba(0,70,90,0.3);
+        }
+
+        .btn-order:active {
+            transform: translateY(14px);
+            box-shadow: 0 2px 0 #05222b, 0 12px 25px #0a4a5a;
+        }
+
+        .footer-note {
+            margin-top: 2rem;
+            font-size: 0.75rem;
+            color: #577f8c;
+            text-align: center;
+            border-top: 2px dotted #bcd3dd;
+            padding-top: 1.4rem;
+            letter-spacing: 0.6px;
+        }
+
+        /* ---------- REGISTRATION PAGE (new page with full reg form) ---------- */
+        .registration-container {
+            max-width: 600px;
+            width: 100%;
+            background: white;
+            border-radius: 50px 50px 40px 40px;
+            box-shadow: 0 30px 45px -15px #0b3343;
+            padding: 2.5rem 2.4rem;
+            border: 1px solid #fff9f0;
+        }
+
+        .reg-head {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 1.8rem;
+        }
+
+        .reg-head i {
+            font-size: 2.5rem;
+            color: #dc7f2a;
+            background: #fff2e1;
+            padding: 0.7rem;
+            border-radius: 25px;
+        }
+
+        .reg-head h2 {
+            font-size: 2rem;
+            font-weight: 800;
+            color: #073b4e;
+            line-height: 1.1;
+        }
+
+        .reg-intro {
+            background: #e3f0f5;
+            padding: 1rem 1.5rem;
+            border-radius: 50px;
+            margin-bottom: 2.2rem;
+            font-weight: 600;
+            color: #145e72;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            border-left: 8px solid #ff9f4b;
+        }
+
+        /* registration form */
+        .reg-form {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .input-group {
+            display: flex;
+            flex-direction: column;
+            gap: 0.4rem;
+        }
+
+        .input-group label {
+            font-weight: 700;
+            font-size: 0.9rem;
+            color: #0b465a;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            letter-spacing: 0.3px;
+        }
+
+        .input-group label i {
+            color: #e2782c;
+            width: 20px;
+        }
+
+        .input-group input, .input-group select {
+            padding: 0.9rem 1.4rem;
+            border: 2px solid #dcf0f5;
+            border-radius: 60px;
+            font-size: 1rem;
+            background: #fcfefe;
+            font-family: 'Inter', sans-serif;
+            transition: 0.2s;
+        }
+
+        .input-group input:focus, .input-group select:focus {
+            border-color: #1697b1;
+            outline: none;
+            box-shadow: 0 0 0 5px rgba(22,151,177,0.1);
+            background: white;
+        }
+
+        .row-2col {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .row-2col .input-group {
+            flex: 1 1 200px;
+        }
+
+        /* extra features from original card (Photo slide, extra boost) integrated as options */
+        .service-addon {
+            display: flex;
+            gap: 1.8rem;
+            flex-wrap: wrap;
+            background: #fafdff;
+            padding: 0.8rem 1.2rem;
+            border-radius: 60px;
+            border: 1.5px dashed #68b3c6;
+            margin: 0.2rem 0 0.4rem;
+        }
+
+        .addon-item {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-weight: 600;
+            color: #1b5162;
+        }
+
+        .btn-register {
+            background: #094c59;
+            border: none;
+            color: white;
+            font-weight: 800;
+            font-size: 1.5rem;
+            padding: 0.9rem 1.8rem;
+            border-radius: 100px;
+            letter-spacing: 3px;
+            margin-top: 1rem;
+            cursor: pointer;
+            box-shadow: 0 14px 0 #05313b, 0 12px 25px #0a404e;
+            transition: 0.07s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            text-transform: uppercase;
+        }
+
+        .btn-register:hover {
+            background: #147282;
+            transform: translateY(6px);
+            box-shadow: 0 8px 0 #05313b, 0 16px 30px #0f5868;
+        }
+
+        .btn-register:active {
+            transform: translateY(14px);
+            box-shadow: 0 2px 0 #05313b, 0 12px 25px #0f5868;
+        }
+
+        .back-order-link {
+            margin-top: 1.8rem;
+            text-align: center;
+        }
+
+        .back-order-link a {
+            color: #1e6a7a;
+            font-weight: 700;
+            text-decoration: none;
+            border-bottom: 3px solid #f9c74f;
+            padding-bottom: 3px;
+            font-size: 1.05rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .back-order-link a:hover {
+            border-bottom-color: #f9844a;
+            color: #044c5c;
+        }
+
+        /* page visibility toggling */
+        .hidden-page {
+            display: none !important;
+        }
+
+        .active-page {
+            display: flex !important;
+        }
+
+        /* small note */
+        .reg-footer-note {
+            margin-top: 1.5rem;
+            font-size: 0.7rem;
+            color: #567f8c;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <!-- 
+        ============ PAGE 1 — ORDER CARD (exact replica from image) ============
+    -->
+    <div id="orderPage" class="page active-page">
+        <div class="order-card">
+            <!-- GBP £ badge -->
+            <div class="gbp-badge">
+                <i class="fas fa-pound-sign"></i> GBP (£)
+            </div>
+
+            <!-- 2 Days / £150 block -->
+            <div class="price-row">
+                <span class="days-big">2 Days</span>
+                <span class="pound-big">£150</span>
+            </div>
+
+            <!-- Lankasri Home (main) -->
+            <div class="lankasri-title">Lankasri Home</div>
+
+            <!-- Word limit & correction -->
+            <div class="meta-row">
+                <span class="word-limit"><i class="fas fa-file-alt"></i> Word Limit 50 Words</span>
+                <span class="correction"><i class="fas fa-check-double"></i> Correction</span>
+            </div>
+
+            <!-- FEATURE LIST — exactly as image: 6 items with asterisk, including Lifetime Record, Tamilwin.com, Social Media, Photo SlideShow, Priority Publish, Extra Boost -->
+            <ul class="feature-grid">
+                <li><i class="fas fa-infinity"></i> *Lifetime Record</li>
+                <li><i class="fas fa-globe"></i> *Tamilwin.com</li>
+                <li><i class="fas fa-hashtag"></i> *Social Media</li>
+                <li><i class="fas fa-images"></i> *Photo SlideShow</li>
+                <li><i class="fas fa-star"></i> *Priority Publish</li>
+                <li><i class="fas fa-rocket"></i> *Extra Boost</li>
+            </ul>
+
+            <!-- TWO ORDER BUTTONS — exactly as shown: "ORDER" and "ORDER" (both functional) -->
+            <div class="order-duo">
+                <button class="btn-order" id="orderBtnFirst"><i class="fas fa-cart-shopping"></i> ORDER</button>
+                <button class="btn-order second-order" id="orderBtnSecond"><i class="fas fa-bolt"></i> ORDER</button>
+            </div>
+
+            <!-- footer fine print (Lifetime record, Tamilwin hints) -->
+            <div class="footer-note">
+                <i class="fas fa-shield"></i> *Lifetime Record · *Tamilwin.com · <i class="fas fa-slideshow"></i> Photo SlideShow 
+            </div>
+        </div>
+    </div>
+
+    <!-- 
+        ============ PAGE 2 — REGISTRATION PAGE (new page with full reg form) ============
+        Clicking any ORDER button brings this page, hiding order page.
+        Contains: name, email, phone, country, news text (50 words), plus addons from image.
+    -->
+    <div id="registrationPage" class="page hidden-page">
+        <div class="registration-container">
+            <!-- registration header -->
+            <div class="reg-head">
+                <i class="fas fa-id-card"></i>
+                <h2>Registration</h2>
+            </div>
+
+            <!-- Lankasri Home context -->
+            <div class="reg-intro">
+                <i class="fas fa-crown"></i> Lankasri Home – complete your order details
+            </div>
+
+            <!-- REGISTRATION FORM — fields as requested: name, email, phone, news text, plus logical extras -->
+            <form class="reg-form" id="registrationForm" onsubmit="event.preventDefault(); alert('✅ Registration demo: your order is placed. Thank you!');">
+                <!-- Full name -->
+                <div class="input-group">
+                    <label><i class="fas fa-user-circle"></i> Full name</label>
+                    <input type="text" placeholder="e.g. Arul Selvam" required>
+                </div>
+
+                <!-- Email address -->
+                <div class="input-group">
+                    <label><i class="fas fa-envelope"></i> Email address</label>
+                    <input type="email" placeholder="contact@tamilwin.com" required>
+                </div>
+
+                <!-- Phone and Country - two columns -->
+                <div class="row-2col">
+                    <div class="input-group">
+                        <label><i class="fas fa-mobile-alt"></i> Phone</label>
+                        <input type="tel" placeholder="+44 7700 900321">
+                    </div>
+                    <div class="input-group">
+                        <label><i class="fas fa-map-pin"></i> Country</label>
+                        <input type="text" placeholder="United Kingdom" value="United Kingdom">
+                    </div>
+                </div>
+
+                <!-- News text / 50 words field (exactly from Word Limit) -->
+                <div class="input-group">
+                    <label><i class="fas fa-file-signature"></i> News text (max 50 words) </label>
+                    <input type="text" placeholder="Type your 50‑word brief here...">
+                </div>
+
+                <!-- addons that reflect the *Photo SlideShow and *Extra Boost — from original image -->
+                <div class="service-addon">
+                    <span class="addon-item"><i class="fas fa-images" style="color:#a975d5;"></i> *Photo SlideShow (included)</span>
+                    <span class="addon-item"><i class="fas fa-rocket" style="color:#e6863b;"></i> *Extra Boost (+priority)</span>
+                    <span class="addon-item"><i class="fas fa-infinity" style="color:#2a7f6e;"></i> Lifetime Record</span>
+                </div>
+
+                <!-- REGISTER & PAY button -->
+                <button type="submit" class="btn-register">
+                    <i class="fas fa-check-circle"></i> Register & pay
+                </button>
+
+                <!-- Back to order page link (exactly as requested: back to order card) -->
+                <div class="back-order-link">
+                    <a href="#" id="backToOrderLink"><i class="fas fa-arrow-left"></i> back to order page</a>
+                </div>
+
+                <!-- footer with tamilwin & social media mention -->
+                <div class="reg-footer-note">
+                    <i class="fas fa-globe"></i> Tamilwin.com  •  <i class="fas fa-hashtag"></i> Social Media  •  Priority Publish
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        (function() {
+            'use strict';
+
+            // page elements
+            const orderPage = document.getElementById('orderPage');
+            const regPage = document.getElementById('registrationPage');
+            
+            // two order buttons from order card
+            const orderBtn1 = document.getElementById('orderBtnFirst');
+            const orderBtn2 = document.getElementById('orderBtnSecond');
+
+            // back link inside registration page
+            const backLink = document.getElementById('backToOrderLink');
+
+            // function to switch to registration page
+            function goToRegistration(event) {
+                if (event) event.preventDefault();
+                // hide order page, show registration page
+                orderPage.classList.remove('active-page');
+                orderPage.classList.add('hidden-page');
+                regPage.classList.remove('hidden-page');
+                regPage.classList.add('active-page');
+            }
+
+            // function to go back to order page
+            function goToOrder(event) {
+                if (event) event.preventDefault();
+                regPage.classList.remove('active-page');
+                regPage.classList.add('hidden-page');
+                orderPage.classList.remove('hidden-page');
+                orderPage.classList.add('active-page');
+            }
+
+            // attach listeners to both ORDER buttons
+            if (orderBtn1) orderBtn1.addEventListener('click', goToRegistration);
+            if (orderBtn2) orderBtn2.addEventListener('click', goToRegistration);
+
+            // attach back link
+            if (backLink) backLink.addEventListener('click', goToOrder);
+
+            // ensure proper initial state (order visible, reg hidden)
+            window.addEventListener('DOMContentLoaded', function() {
+                // hard reset
+                orderPage.classList.add('active-page');
+                orderPage.classList.remove('hidden-page');
+                regPage.classList.add('hidden-page');
+                regPage.classList.remove('active-page');
+            });
+        })();
+    </script>
+
+    <!-- all image elements are represented: GBP, 2 days, £150, Lankasri Home, Word Limit 50, Correction, all six asterisk features, double ORDER, lifetime record, tamilwin, social media, slideshow, priority, extra boost -->
+    <!-- registration page has all fields and back link -->
+</body>
+</html>

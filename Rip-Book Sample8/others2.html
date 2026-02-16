@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pricing Tables</title>
+    <style>
+
+/* General Layout */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f9f9f9;
+    padding: 40px;
+    color: #333;
+}
+
+.container {
+    max-width: 1100px;
+    margin: 0 auto;
+    background: #fff;
+    padding: 20px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    border-radius: 8px;
+}
+
+h2 {
+    color: #b71c1c; /* Deep Red from the video */
+    text-transform: uppercase;
+    font-size: 1.5rem;
+    border-left: 5px solid #ffc107; /* Gold accent */
+    padding-left: 15px;
+    margin-bottom: 25px;
+}
+
+/* Table Styling */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 50px;
+    background-color: white;
+}
+
+th {
+    background-color: #f2f2f2;
+    color: #333;
+    font-weight: 700;
+    padding: 15px;
+    border: 1px solid #ddd;
+}
+
+td {
+    padding: 12px;
+    border: 1px solid #eee;
+    text-align: center;
+    font-size: 0.95rem;
+}
+
+/* Highlighted Column (The 'Pro' or selected plan) */
+.highlight-column {
+    background-color: #fffde7; /* Light yellow */
+    border: 2px solid #fbc02d !important;
+}
+
+.price-header {
+    font-size: 1.2rem;
+    display: block;
+    color: #b71c1c;
+}
+
+/* Status Icons */
+.check {
+    color: #2e7d32; /* Green */
+    font-size: 1.2rem;
+}
+
+.cross {
+    color: #c62828; /* Red */
+    font-weight: bold;
+}
+
+.optional {
+    color: #fbc02d; /* Gold */
+    font-weight: bold;
+}
+
+/* Hover Effect */
+tbody tr:hover {
+    background-color: #fcfcfc;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    table {
+        display: block;
+        overflow-x: auto;
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+        body { font-family: Arial, sans-serif; line-height: 1.6; color: #333; padding: 20px; }
+        .container { max-width: 1000px; margin: auto; }
+        h2 { border-bottom: 2px solid #d32f2f; padding-bottom: 10px; color: #d32f2f; }
+        table { width: 100%; border-collapse: collapse; margin-bottom: 40px; text-align: center; }
+        th, td { border: 1px solid #ddd; padding: 12px; }
+        th { background-color: #f4f4f4; }
+        .highlight { background-color: #fff9c4; font-weight: bold; }
+        .check { color: green; font-weight: bold; }
+        .cross { color: red; font-weight: bold; }
+        .optional { color: #fbc02d; font-weight: bold; }
+    </style>
+</head>
+<body>
+
+<div class="container">
+
+    <h2>1. Obituary Notice (மரண அறிவித்தல்)</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Features</th>
+                <th>2 Days (£150)</th>
+                <th>3 Days (£180)</th>
+                <th class="highlight">4 Days (£240)</th>
+                <th>5 Days (£300)</th>
+                <th>6 Days (£360)</th>
+                <th>7 Days (£420)</th>
+                <th>8 Days (£480)</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Lankasri Home</td>
+                <td class="check">✓</td>
+                <td class="check">✓</td>
+                <td class="check">✓</td>
+                <td class="check">✓</td>
+                <td class="check">✓</td>
+                <td class="check">✓</td>
+                <td class="check">✓</td>
+            </tr>
+            <tr>
+                <td>Word Limit</td>
+                <td>50 Words</td>
+                <td>70 Words</td>
+                <td>Unlimited</td>
+                <td>Unlimited</td>
+                <td>Unlimited</td>
+                <td>Unlimited</td>
+                <td>Unlimited</td>
+            </tr>
+            <tr>
+                <td>Correction</td>
+                <td class="cross">-</td>
+                <td class="check">✓</td>
+                <td class="check">✓</td>
+                <td class="check">✓</td>
+                <td class="check">✓</td>
+                <td class="check">✓</td>
+                <td class="check">✓</td>
+            </tr>
+            <tr>
+                <td>Lifetime Record</td>
+                <td class="optional">+</td>
+                <td class="optional">+</td>
+                <td class="check">✓</td>
+                <td class="check">✓</td>
+                <td class="check">✓</td>
+                <td class="check">✓</td>
+                <td class="check">✓</td>
+            </tr>
+            <tr>
+                <td>Tamilwin.com</td>
+                <td class="cross">-</td>
+                <td class="cross">-</td>
+                <td class="check">✓</td>
+                <td class="check">✓</td>
+                <td class="check">✓</td>
+                <td class="check">✓</td>
+                <td class="check">✓</td>
+            </tr>
+            <tr>
+                <td>Social Media</td>
+                <td class="cross">-</td>
+                <td class="cross">-</td>
+                <td class="check">✓</td>
+                <td class="check">✓</td>
+                <td class="check">✓</td>
+                <td class="check">✓</td>
+                <td class="check">✓</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <hr>
+
+    <h2>2. Remembrance (நினைவஞ்சலி)</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Features</th>
+                <th>2 Days (£60)</th>
+                <th>4 Days (£120)</th>
+                <th>6 Days (£180)</th>
+                <th>8 Days (£240)</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Lankasri Home</td>
+                <td class="check">✓</td>
+                <td class="check">✓</td>
+                <td class="check">✓</td>
+                <td class="check">✓</td>
+            </tr>
+            <tr>
+                <td>Word Limit</td>
+                <td>70 Words</td>
+                <td>Unlimited</td>
+                <td>Unlimited</td>
+                <td>Unlimited</td>
+            </tr>
+            <tr>
+                <td>Correction</td>
+                <td class="cross">-</td>
+                <td class="check">✓</td>
+                <td class="check">✓</td>
+                <td class="check">✓</td>
+            </tr>
+            <tr>
+                <td>Photo Slideshow</td>
+                <td class="cross">-</td>
+                <td class="check">✓</td>
+                <td class="check">✓</td>
+                <td class="check">✓</td>
+            </tr>
+            <tr>
+                <td>Lifetime Record</td>
+                <td class="check">✓</td>
+                <td class="check">✓</td>
+                <td class="check">✓</td>
+                <td class="check">✓</td>
+            </tr>
+            <tr>
+                <td>Tamilwin.com</td>
+                <td class="cross">-</td>
+                <td class="check">✓</td>
+                <td class="check">✓</td>
+                <td class="check">✓</td>
+            </tr>
+        </tbody>
+    </table>
+
+</div>
+
+</body>
+</html>

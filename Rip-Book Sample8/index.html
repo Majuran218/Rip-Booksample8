@@ -1,0 +1,685 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rip · Funeral, Birthday & Anniversary</title>
+    <!-- Font Awesome 6 (free) for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        }
+
+       :root {
+            --primary-color: #c83535;
+            --secondary-color: #f9f3ed;
+            --accent-color: #b28b7c;
+            --text-color: #2b1c14;
+            --bg-color: #f4f2ee;
+        }
+
+
+
+
+        body {
+            background: #f4f2ee;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 2rem 1rem;
+        }
+
+
+
+
+        /* header / navigation — exactly from image brief */
+        .top-bar {
+            background: white;
+            padding: 1rem 2rem;
+            border-bottom: 1px solid #ece7e1;
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .logo h1 {
+            font-size: 1.8rem;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+            color: #1f1a17;
+        }
+        .logo h1 i {
+            color: #b22b2b;
+            margin-right: 4px;
+        }
+        .recent-badge {
+            background: #fdf8f0;
+            padding: 0.25rem 1rem;
+            border-radius: 30px;
+            border: 1px solid #d4c9bc;
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: #49443e;
+        }
+        .contact-row {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+            color: #2b2a28;
+            font-size: 0.95rem;
+        }
+        .contact-row i {
+            margin-right: 6px;
+            color: #8b6b4d;
+        }
+        .chat-btn {
+            background: #1a3e4c;
+            color: white;
+            padding: 0.4rem 1.2rem;
+            border-radius: 40px;
+            font-weight: 500;
+            font-size: 0.9rem;
+            border: none;
+            cursor: default;
+        }
+        .nav-links {
+            display: flex;
+            gap: 1.8rem;
+            margin-left: 1rem;
+        }
+        .nav-links a {
+            text-decoration: none;
+            color: #2e2b27;
+            font-weight: 500;
+            font-size: 0.95rem;
+        }
+
+        /* country posts line — faithfully reproduced */
+        .country-strip {
+            background: #faf8f5;
+            padding: 0.9rem 2rem;
+            border-bottom: 1px solid #e0dad3;
+            display: flex;
+            flex-wrap: wrap;
+            align-items: baseline;
+            gap: 0.4rem 1.8rem;
+            font-size: 0.88rem;
+            color: #3c3732;
+        }
+        .country-strip span {
+            font-weight: 600;
+            color: #0e2e3b;
+        }
+        .country-item {
+            display: inline-flex;
+            gap: 0.3rem;
+        }
+
+        /* RIPBOOK main 3‑part container — FUNERAL, BIRTHDAY, ANNIVERSARY */
+        .three-containers {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            border-top: 1px solid #e2dbd2;
+            border-bottom: 1px solid #e2dbd2;
+            background: white;
+        }
+
+        /* base style for each column */
+        .col {
+            padding: 1.8rem 1.5rem;
+            border-right: 1px solid #ece5dd;
+            background: white;
+        }
+        .col:last-child {
+            border-right: none;
+        }
+
+        .col-header {
+            display: flex;
+            align-items: baseline;
+            margin-bottom: 1.5rem;
+            border-bottom: 2px solid #dbc9b5;
+            padding-bottom: 0.6rem;
+        }
+        .col-header h2 {
+            font-size: 1.35rem;
+            font-weight: 650;
+            color: #352c24;
+            letter-spacing: -0.3px;
+        }
+        .col-header i {
+            color: #97633b;
+            margin-right: 10px;
+            font-size: 1.3rem;
+        }
+        .live-tag {
+            background: #c83535;
+            color: white;
+            font-size: 0.7rem;
+            font-weight: 700;
+            padding: 0.2rem 0.6rem;
+            border-radius: 30px;
+            margin-left: 12px;
+            text-transform: uppercase;
+        }
+
+        /* ----- FUNERAL DETAILS (left column) — from obituary & tributes ----- */
+        .obit-card {
+            background: #fefcfa;
+            padding: 1.3rem;
+            border-radius: 18px;
+            border: 1px solid #f1e3da;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.02);
+            margin-bottom: 1.8rem;
+        }
+        .relation-tag {
+            background: #faece5;
+            display: inline-block;
+            padding: 0.2rem 1rem;
+            border-radius: 40px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            color: #7d4e3a;
+            letter-spacing: 0.5px;
+            margin-bottom: 0.9rem;
+            border: 1px solid #e7cfc0;
+        }
+        .deceased-name {
+            font-size: 1.75rem;
+            font-weight: 700;
+            line-height: 1.2;
+            color: #2b1c14;
+            margin-bottom: 0.25rem;
+        }
+        .lifespan {
+            font-size: 1.1rem;
+            color: #65554b;
+            font-weight: 450;
+            margin-bottom: 0.8rem;
+        }
+        .places {
+            background: #fff3ea;
+            padding: 0.7rem 1rem;
+            border-radius: 14px;
+            margin: 1rem 0 0.8rem;
+            font-size: 0.9rem;
+        }
+        .places i {
+            color: #9e6b51;
+            width: 22px;
+        }
+        .tribute-stats {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin: 1rem 0 0.4rem;
+        }
+        .tribute-count {
+            font-weight: 700;
+            color: #2d4e5c;
+            font-size: 1.1rem;
+        }
+        .live-small {
+            background: #c83535;
+            color: white;
+            border-radius: 30px;
+            padding: 0.2rem 0.9rem;
+            font-size: 0.7rem;
+            font-weight: 700;
+        }
+
+        /* 5th year remembrance */
+        .remembrance {
+            background: #f9f3ed;
+            border-radius: 18px;
+            padding: 1.2rem;
+            margin-bottom: 1.6rem;
+            border-left: 5px solid #b28b7c;
+        }
+        .remembrance i {
+            color: #9a7b6a;
+            margin-right: 6px;
+        }
+        .remembrance small {
+            color: #5c514b;
+            font-weight: 600;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+        }
+        .remembrance h3 {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin: 0.2rem 0 0.1rem;
+            color: #3e2e27;
+        }
+        .remembrance p {
+            color: #6a4f41;
+            font-size: 0.9rem;
+        }
+
+        /* Recent tributes list */
+        .tribute-list {
+            list-style: none;
+        }
+        .tribute-list li {
+            display: flex;
+            flex-direction: column;
+            padding: 0.7rem 0;
+            border-bottom: 1px dashed #ddd6cf;
+        }
+        .tribute-list li:last-child {
+            border-bottom: none;
+        }
+        .tribute-title {
+            font-weight: 650;
+            color: #2b3e47;
+        }
+        .tribute-meta {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.78rem;
+            color: #706a63;
+            margin-top: 3px;
+        }
+        .more-badge {
+            background: #eae3db;
+            padding: 0.15rem 0.6rem;
+            border-radius: 40px;
+            font-size: 0.7rem;
+            font-weight: 700;
+        }
+
+        /* ----- BIRTHDAY WISHES (middle column) – authentic RIPBOOK feel, sri lankan context ----- */
+        .birthday-wish-card {
+            background: linear-gradient(145deg, #fffbf4, #fffcf8);
+            border-radius: 22px;
+            padding: 1.2rem;
+            border: 1px solid #ffded0;
+            margin-bottom: 1.4rem;
+            box-shadow: 0 4px 10px rgba(255,225,200,0.2);
+        }
+        .birthday-icon {
+            font-size: 2rem;
+            color: #c48a5c;
+            margin-bottom: 0.3rem;
+        }
+        .bday-name {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: #402e24;
+            line-height: 1.1;
+        }
+        .age-tag {
+            background: #fadcd2;
+            border-radius: 60px;
+            padding: 0.2rem 1rem;
+            display: inline-block;
+            margin: 0.5rem 0 0.3rem;
+            font-size: 0.8rem;
+            font-weight: 700;
+            color: #7d4033;
+        }
+        .wish-message {
+            background: white;
+            border-radius: 18px;
+            padding: 0.8rem 1rem;
+            border-left: 6px solid #edb8a7;
+            margin-top: 0.6rem;
+            font-style: italic;
+            color: #4d413a;
+            box-shadow: 0 2px 4px #f3e4dc;
+        }
+
+        .wisher-info {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.8rem;
+            margin-top: 0.7rem;
+            color: #75604f;
+            font-weight: 500;
+        }
+
+        /* Anniversary column */
+        .anniversary-card {
+            background: #f2f1ed;
+            border-radius: 20px;
+            padding: 1.3rem;
+            background: linear-gradient(145deg, #fdf7f2, #fffefc);
+            border: 1px solid #e6cfc1;
+            margin-bottom: 1.5rem;
+        }
+        .anni-ribbon {
+            background: #bd7e6b;
+            color: white;
+            padding: 0.2rem 0.9rem;
+            border-radius: 40px;
+            font-size: 0.7rem;
+            font-weight: 600;
+            display: inline-block;
+            margin-bottom: 0.5rem;
+            letter-spacing: 1px;
+        }
+        .couple-names {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #30201a;
+        }
+        .anniversary-year {
+            font-size: 1rem;
+            color: #685a52;
+            margin-bottom: 0.8rem;
+        }
+        .tribute-small {
+            border-top: 1px solid #eedcd2;
+            margin-top: 0.8rem;
+            padding-top: 0.7rem;
+            font-size: 0.85rem;
+        }
+
+        /* footer chat etc – mimic original layout */
+        .footer-chat {
+            background: #fffbf7;
+            padding: 1rem 2rem;
+            border-top: 1px solid #dad1c7;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: #47423c;
+            font-size: 0.9rem;
+        }
+        .footer-chat i {
+            color: #5f6d5c;
+            margin-right: 6px;
+        }
+        .footer-right span {
+            margin-left: 1rem;
+        }
+
+        hr {
+            border: none;
+            border-top: 1px solid #e4dbd0;
+        }
+
+        /* scroll hint: subtle */
+        .scroll-hint {
+            display: flex;
+            justify-content: center;
+            padding: 0.6rem 0 0.2rem;
+            color: #a09b95;
+            font-size: 0.75rem;
+            letter-spacing: 1.5px;
+        }
+        .scroll-hint i {
+            margin: 0 8px;
+        }
+
+        @media (max-width: 800px) {
+            .three-containers { grid-template-columns: 1fr; }
+            .col { border-right: none; border-bottom: 1px solid #ece5dd; }
+        }
+    </style>
+</head>
+<body>
+    <div class="full-page">
+
+        <!-- TOP section: exactly as image.png, RIPBOOK header, country list, contact -->
+        <div class="top-bar">
+            <div class="logo">
+                <h1><i class="fas fa-book-open"></i> Events</h1>
+            </div>
+            <div class="recent-badge">
+                <i class="fas fa-globe"></i> RECENT POSTS
+            </div>
+            <div class="contact-row">
+                <span><i class="fas fa-phone-alt"></i> +44 20 3137 6284</span>
+                <span><i class="fas fa-clock"></i> 24/7</span>
+                <span class="chat-btn"><i class="fas fa-comment"></i> Chat with us</span>
+            </div>
+        </div>
+
+        <!-- navigation: Home / VIP / Obituaries -->
+        <div style="display: flex; justify-content: space-between; align-items: center; padding: 0.2rem 2rem; background: white; border-bottom: 1px solid #efe9e2;">
+            <div class="nav-links">
+                <a href="#Home">Home</a>
+                <a href="ourservices1.html" class="btn-outline">Our Services</a>
+                <a href="order.html" class="btn-outline">Order</a>
+                <a href="Contact.html" class="btn-outline">Contact</a>
+                <a href="creatememorial.html" class="btn-outline">Create Memorial</a>
+                <a href="birthdaywishes.html" class="btn-outline">Birthday Wishes</a>
+            </div>
+            <div style="color: #a5785b;"><i class="fas fa-search"></i></div>
+        </div>
+
+        <!-- country strip — exactly as per image: Australia 3 Posts ... Nigeria -->
+        <div class="country-strip">
+            <span>RECENT POSTS</span>
+            <div class="country-item">Australia <span>3 Posts</span></div>
+            <div class="country-item">Canada <span>29 Posts</span></div>
+            <div class="country-item">Switzerland <span>3 Posts</span></div>
+            <div class="country-item">Germany <span>12 Posts</span></div>
+            <div class="country-item">Denmark <span>1 Post</span></div>
+            <div class="country-item">France <span>8 Posts</span></div>
+            <div class="country-item">United Kingdom <span>20 Posts</span></div>
+            <div class="country-item">India <span>4 Posts</span></div>
+            <div class="country-item">Sri Lanka <span>116 Posts</span></div>
+            <div class="country-item">Malaysia <span>1 Post</span></div>
+            <div class="country-item">Nigeria</div>   <!-- no number in image, kept -->
+        </div>
+
+        <!-- 3 PART CONTAINERS: FUNERAL DETAILS | BIRTHDAY WISHES | ANNIVERSARY DETAILS (scrollable area inside each column if needed) -->
+        <div class="three-containers">
+
+            
+            
+            <!-- 1) FUNERAL DETAILS container — includes obituary, remembrance, tributes from image -->
+            <div class="col">
+                <div class="col-header">
+                    <i class="fas fa-candle-holder"></i>
+                    <h2>Funeral details</h2>
+                    <span class="live-tag">LIVE</span>
+                </div>
+                <!-- main obituary: exactly Mr Ambalavanar Perampalam -->
+                <div class="obit-card">
+                    <div class="relation-tag"><i class="fas fa-leaf"></i> OBITUARY</div>
+                    <div class="deceased-name">Mr Ambalavanar Perampalam</div>
+                    <div class="lifespan">1955 – 2026</div>
+                    <div class="places">
+                        <div><i class="fas fa-map-pin"></i> Neduntivu West, Sri Lanka</div>
+                        <div><i class="fas fa-map-pin"></i> Kilinochchi, Sri Lanka</div>
+                        <div><i class="fas fa-map-pin"></i> Uthayanagar East, Sri Lanka</div>
+                    </div>
+                    <div class="tribute-stats">
+                        <span class="tribute-count"><i class="fas fa-heart"></i> 2 Tributes</span>
+                        <span class="live-small">LIVE</span>
+                    </div>
+                </div>
+
+                <!-- 5th Year Remembrance – late Appukutty Kandasamy, exactly as in image -->
+                <div class="remembrance">
+                    <small><i class="fas fa-clock"></i> 5th Year Remembrance · 1 Week Ago</small>
+                    <h3>Late Appukutty Kandasamy</h3>
+                    <p>1936 – 2021</p>
+                    <p style="font-size: 0.85rem;"><i class="fas fa-location-dot"></i> Thellipalai, Sri Lanka · Colombo, Sri Lanka</p>
+                </div>
+
+                <!-- Recent TRIBUTES — extracted from image: exactly the list given -->
+                <h4 style="margin-bottom: 0.8rem; color: #4e4139; font-size: 1rem; letter-spacing: 0.5px;"><i class="fas fa-list-ul"></i> RECENT TRIBUTES</h4>
+                <ul class="tribute-list">
+                    <li>
+                        <span class="tribute-title">Mrs Thilagamani Jambugeswaran</span>
+                        <div class="tribute-meta"><span>Vino Raghu</span> <span>3 Hours Ago</span></div>
+                    </li>
+                    <li>
+                        <span class="tribute-title">Mrs Kandiah Sivapakiyam</span>
+                        <div class="tribute-meta"><span>Jathu</span> <span>5 Hours Ago</span></div>
+                    </li>
+                    <li>
+                        <span class="tribute-title">Mr Thambapillai Yogananther</span>
+                        <div class="tribute-meta">
+                            <span>Seevaratnam Selliah</span> 
+                            <span>6 Hours Ago <span class="more-badge">+2 MORE</span></span>
+                        </div>
+                    </li>
+                    <li>
+                        <span class="tribute-title">Mrs Thayapararas Sarathadevi</span>
+                        <div class="tribute-meta">
+                            <span>Tharsini Sivakumar</span> 
+                            <span>7 Hours Ago <span class="more-badge">+3 MORE</span></span>
+                        </div>
+                    </li>
+                    <li>
+                        <span class="tribute-title">Mr Velupillai Sivarajah</span>
+                        <div class="tribute-meta">
+                            <span>வசந்தன் குருக்கள்</span> 
+                            <span>7 Hours Ago <span class="more-badge">+3 MORE</span></span>
+                        </div>
+                    </li>
+                    <li>
+                        <span class="tribute-title">Mrs Nagammah Perinbanayagam</span>
+                        <div class="tribute-meta">
+                            <span>Thambipillai Shanmuganandarajah</span> 
+                            <span>8 Hours Ago <span class="more-badge">+4 MORE</span></span>
+                        </div>
+                    </li>
+                    <li>
+                        <span class="tribute-title">Mr Kuddithamby Sivasubramaniam</span>
+                        <div class="tribute-meta"><span>Puvana Asokan And Family</span> <span>10 Hours Ago</span></div>
+                    </li>
+                    <li>
+                        <span class="tribute-title">Mr Rasiah Ponnusamy</span>
+                        <div class="tribute-meta"><span>Sivanesan Sivagnanam</span> <span>—</span></div>
+                    </li>
+                </ul>
+                <div style="margin-top: 0.5rem; color: #7b6355; font-size: 0.8rem;"><i class="fas fa-arrow-down"></i> scroll for more funeral details</div>
+            </div>
+            
+            
+            <!-- 2) BIRTHDAY WISHES container — authentic to sri lankan context, RIPBOOK style -->
+
+
+            
+            <div class="col">
+                <div class="col-header">
+                    <i class="fas fa-cake-candles"></i>
+                    <h2>Birthday wishes</h2>
+                </div>
+                <!-- Birthday wish card 1 (in loving memory / remembrance style, but birthday) -->
+                <div class="birthday-wish-card">
+                    <div class="birthday-icon"><i class="fas fa-birthday-cake"></i></div>
+                    <div class="bday-name">Mrs Rajeswary Thurairajah</div>
+                    <div class="age-tag"><i class="far fa-star"></i> 80th Birthday · 23 Mar 2026</div>
+                    <div class="wish-message">
+                        “Loving mother, always in our hearts. Celebrating your 80th birthday in heaven. — From family in Jaffna & London”
+                    </div>
+                    <div class="wisher-info">
+                        <span><i class="fas fa-heart"></i> Sutha & Vimal</span>
+                        <span>4 hours ago</span>
+                    </div>
+                </div>
+                <div class="birthday-wish-card">
+                    <div class="birthday-icon"><i class="fas fa-balloon"></i></div>
+                    <div class="bday-name">Late Mr Selliah Parameswaran</div>
+                    <div class="age-tag">92nd birth anniversary</div>
+                    <div class="wish-message">
+                        “Remembering Appa with love and gratitude. Your values live on. Birthday tribute from sons & daughters.”
+                    </div>
+                    <div class="wisher-info">
+                        <span>Param family, Colombo</span>
+                        <span>yesterday</span>
+                    </div>
+                </div>
+                <div class="birthday-wish-card" style="background: #fff5ea;">
+                    <div class="birthday-icon"><i class="fas fa-candy-cane"></i></div>
+                    <div class="bday-name">Kanthasamy Pathmanathan</div>
+                    <div class="age-tag">70th birthday · 9 April</div>
+                    <div class="wish-message">
+                        “Pathy uncle, your kindness is remembered by everyone in Manipay. Happy birthday in heaven.”
+                    </div>
+                    <div class="wisher-info">
+                        <span>Nephew Suresh, Canada</span>
+                        <span>2 days ago</span>
+                    </div>
+                </div>
+                <div style="background: #eae1d7; border-radius: 40px; padding: 0.4rem 0.8rem; font-size: 0.8rem; text-align: center; color: #594e48; margin-top: 0.5rem;">
+                    <i class="fas-regular fa-cake"></i> +5 more birthday wishes this week
+                </div>
+                <div style="margin-top: 1rem; font-size: 0.8rem; color: #9a7b6a;"><i class="fas fa-scroll"></i> scroll down for more celebrations</div>
+            </div>
+
+
+            <!-- 3) ANNIVERSARY DETAILS container (wedding / death anniversaries) -->
+            <div class="col">
+                <div class="col-header">
+                    <i class="fas fa-ring"></i>
+                    <h2>Anniversary details</h2>
+                </div>
+                <!-- Wedding anniversary remembrance -->
+                <div class="anniversary-card">
+                    <span class="anni-ribbon"><i class="fas fa-calendar-alt"></i> 52nd Wedding Anniversary</span>
+                    <div class="couple-names">Mr & Mrs Kandiah</div>
+                    <div class="anniversary-year">Velupillai Kandiah ❤️ Parameswary Kandiah</div>
+                    <div style="display: flex; gap: 0.8rem; font-size: 0.8rem; margin: 0.6rem 0; color: #8b6f60;">
+                        <span><i class="fas fa-location-dot"></i> Chavakachcheri</span>
+                        <span><i class="fas fa-location-dot"></i> Toronto</span>
+                    </div>
+                    <div class="tribute-small">
+                        <i class="fas fa-quote-left"></i> 50 years of love, now remembered by children and grandchildren. Forever together.
+                        <div style="display: flex; justify-content: flex-end; margin-top: 5px; font-weight: 500;">— Vino & family <span style="margin-left: 1rem;">6 hrs ago</span></div>
+                    </div>
+                </div>
+                <!-- Death anniversary (5th year remembrance style) -->
+                <div class="anniversary-card" style="background: #faf1ec;">
+                    <span class="anni-ribbon" style="background: #9f7c6b;"><i class="fas fa-cross"></i> 3rd Death Anniversary</span>
+                    <div class="couple-names" style="font-size: 1.3rem;">Mrs Kamaladevi Sivanathan</div>
+                    <div style="margin: 0.2rem 0 0.4rem; color: #5a4c45;">1949 – 2023 · Kokuvil, Sri Lanka</div>
+                    <div style="display: flex; gap: 1.2rem; font-size: 0.8rem;">
+                        <span><i class="fas fa-church"></i> Memorial Mass: 10 Apr</span>
+                        <span><i class="fas fa-users"></i> 12 tributes</span>
+                    </div>
+                    <div style="margin-top: 0.7rem; border-top: 1px solid #eed2c2; padding-top: 0.7rem;">
+                        <span style="font-weight:600;">Pushpa & Sanjiv:</span> “Amma, you are missed every day. Love you.”
+                    </div>
+                </div>
+                <!-- another anniversary entry -->
+                <div class="anniversary-card">
+                    <span class="anni-ribbon" style="background: #a55d4a;"><i class="fas fa-heart"></i> 60th Anniversary</span>
+                    <div class="couple-names" style="font-size: 1.3rem;">Kanagasabai & Nagamma</div>
+                    <div style="margin-top: 6px; color: #5c4c40;"><i class="fas-regular fa-clock"></i> 10 April 1966 – 2026 · diamond tribute</div>
+                    <div style="margin-top: 0.5rem; font-size:0.85rem;">Daughter Dr. Thivya: “Your love story inspires us.”</div>
+                </div>
+                <div style="margin-top: 0.6rem; font-size:0.8rem; color:#7d6a5c;"><i class="fas fa-arrow-circle-down"></i> keep scrolling — more anniversaries</div>
+            </div>
+        </div>
+        
+        <!-- subtle scroll-down hint (for full page) -->
+        <div class="scroll-hint">
+            <i class="fas fa-arrow-down"></i> SCROLL DOWN FOR FULL FUNERAL, BIRTHDAY & ANNIVERSARY DETAILS <i class="fas fa-arrow-down"></i>
+        </div>
+
+        <!-- footer / chat — exactly as image.png shows: +44 20 3137 6284 / 24/7 chat -->
+        <div class="footer-chat">
+            <div><i class="fas fa-phone"></i> +44 20 3137 6284 <span style="margin-left: 1rem;"><i class="fas fa-clock"></i> 24/7</span></div>
+            <div class="footer-right">
+                <i class="fas fa-comment-dots"></i> Chat with us 
+                <span style="border-left: 1px solid #ccc; padding-left: 1rem;"><i class="fas fa-book"></i> Obituaries</span>
+            </div>
+        </div>
+        
+        <!-- tiny copyright / not necessary but adds realism -->
+        <div style="background: #f2ede7; padding: 0.5rem 2rem; font-size: 0.7rem; color: #9f9187; display: flex; justify-content: space-between;">
+            <span>RIPBOOK · honouring lives</span>
+            <span>Neduntivu · Kilinochchi · Colombo · London</span>
+        </div>
+    </div>
+    <!-- end full-page -->
+      
+
+</body>
+</html>
+
+
+

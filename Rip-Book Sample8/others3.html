@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sample birthday wishes · page</title>
+    <!-- Font Awesome for icons (optional, adds charm) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        }
+
+        body {
+            background: linear-gradient(145deg, #fff9f2 0%, #f7ede4 100%);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem 1rem;
+        }
+
+        .birthday-book {
+            max-width: 1200px;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(4px);
+            border-radius: 48px 48px 40px 40px;
+            box-shadow: 0 25px 50px -8px rgba(0, 0, 0, 0.15), 0 10px 20px -5px rgba(193, 142, 92, 0.2);
+            overflow: hidden;
+            border: 1px solid #fff2e6;
+        }
+
+        /* decorative header with birthday mood */
+        .page-header {
+            background: #ffffffc9;
+            padding: 2rem 2.5rem 1.5rem;
+            border-bottom: 2px dashed #fadbc8;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .title-block h1 {
+            font-size: 3rem;
+            font-weight: 500;
+            color: #422f21;
+            letter-spacing: -0.5px;
+            line-height: 1.1;
+        }
+
+        .title-block h1 i {
+            color: #f8b36c;
+            font-size: 2.8rem;
+            margin-right: 12px;
+        }
+
+        .title-block .sub {
+            font-size: 1.1rem;
+            color: #856e58;
+            margin-top: 8px;
+            font-weight: 350;
+            margin-left: 60px;
+        }
+
+        .today-badge {
+            background: #e9daca;
+            padding: 1rem 2rem;
+            border-radius: 100px;
+            font-size: 1.2rem;
+            font-weight: 500;
+            color: #3f2d1c;
+            box-shadow: inset 0 -2px 0 #ccb296;
+        }
+
+        .today-badge i {
+            color: #c96f3a;
+            margin-right: 8px;
+        }
+
+        /* main grid — sample birthday wishes */
+        .wish-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            padding: 3rem 2.5rem;
+            background: #fdfaf7d9;
+        }
+
+        .wish-item {
+            background: #ffffff;
+            border-radius: 32px;
+            padding: 2rem 1.8rem;
+            box-shadow: 0 10px 22px -6px rgba(189, 148, 110, 0.12);
+            transition: all 0.25s ease;
+            border: 1px solid #ffede1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .wish-item:hover {
+            transform: translateY(-8px);
+            border-color: #f5cfb5;
+            box-shadow: 0 30px 35px -12px #e2c7b0;
+        }
+
+        .emoji-icon {
+            font-size: 2.8rem;
+            margin-bottom: 0.8rem;
+            background: #faf0e7;
+            width: 70px;
+            height: 70px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 60px;
+            color: #b27d54;
+        }
+
+        .wish-title {
+            font-size: 1.7rem;
+            font-weight: 400;
+            color: #3e2e21;
+            margin-bottom: 0.9rem;
+            border-bottom: 2px dotted #eed6c2;
+            padding-bottom: 0.3rem;
+        }
+
+        .wish-quote {
+            font-size: 1.1rem;
+            line-height: 1.6;
+            color: #3c352e;
+            background: #fdf1e7;
+            padding: 1.2rem 1rem;
+            border-radius: 24px;
+            margin: 0.8rem 0 1.2rem;
+            font-style: italic;
+            border-left: 5px solid #f7b473;
+        }
+
+        .meta {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-top: auto;
+            color: #9d7f66;
+            font-weight: 450;
+            font-size: 0.95rem;
+        }
+
+        .meta i {
+            color: #d1945b;
+        }
+
+        /* banner for extra birthday wishes CTA */
+        .more-wishes {
+            background: #f7e3d4;
+            margin: 0 2.5rem 2.5rem 2.5rem;
+            padding: 2rem 2.5rem;
+            border-radius: 38px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 1.2rem;
+            border: 1px solid #f5ccb2;
+        }
+
+        .more-wishes p {
+            font-size: 1.6rem;
+            font-weight: 350;
+            color: #473a2e;
+        }
+
+        .more-wishes p i {
+            color: #e08e49;
+            margin-right: 10px;
+        }
+
+        .wish-button {
+            background: #996f4a;
+            color: white;
+            padding: 1rem 2.5rem;
+            border-radius: 60px;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 1.2rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 14px;
+            transition: 0.2s;
+            border: none;
+            cursor: pointer;
+        }
+
+        .wish-button i {
+            font-size: 1.3rem;
+        }
+
+        .wish-button:hover {
+            background: #7f5839;
+            transform: scale(1.02);
+            box-shadow: 0 8px 16px #dbb99b;
+        }
+
+        /* tiny footer / recent wishes (like recent posts but themed) */
+        .recent-birthday-notes {
+            background: #fffffff0;
+            padding: 1.2rem 2.5rem;
+            display: flex;
+            gap: 2.5rem;
+            flex-wrap: wrap;
+            align-items: center;
+            border-top: 2px solid #edd7c7;
+            color: #6b4f39;
+        }
+
+        .recent-birthday-notes span i {
+            margin-right: 6px;
+            color: #b78258;
+        }
+
+        .recent-birthday-notes .note-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .note-item .badge {
+            background: #ebdad0;
+            border-radius: 60px;
+            padding: 4px 16px;
+            font-size: 0.9rem;
+        }
+
+        /* tiny floating click reminder (gimmick) – can be removed, but it's cute */
+        .click-reminder {
+            position: fixed;
+            bottom: 18px;
+            right: 18px;
+            background: #1e1e1ed9;
+            backdrop-filter: blur(6px);
+            color: #f9dbb7;
+            padding: 10px 22px;
+            border-radius: 60px;
+            font-size: 0.9rem;
+            font-weight: 400;
+            border: 1px solid #b59573;
+            z-index: 10;
+        }
+
+        .click-reminder i {
+            margin-right: 8px;
+            color: #f1b04a;
+        }
+
+        @media (max-width: 700px) {
+            .page-header {
+                flex-direction: column;
+                align-items: start;
+            }
+            .title-block h1 {
+                font-size: 2.2rem;
+            }
+            .wish-grid {
+                padding: 2rem 1.2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="birthday-book">
+        <!-- header: sample birthday wishes intro -->
+        <div class="page-header">
+            <div class="title-block">
+                <h1>
+                    <i class="fas fa-birthday-cake"></i> 
+                    sample birthday wishes
+                </h1>
+                <div class="sub"><i class="fas fa-smile-wink"></i> a little inspiration for someone special</div>
+            </div>
+            <div class="today-badge">
+                <i class="fas fa-calendar-check"></i> 24 warm wishes
+            </div>
+        </div>
+
+        <!-- main sample wishes grid (each card is a birthday wish) -->
+        <div class="wish-grid">
+            <!-- wish 1 - classic -->
+            <div class="wish-item">
+                <div class="emoji-icon">🎂</div>
+                <div class="wish-title">for a sweet soul</div>
+                <div class="wish-quote">
+                    “Wishing you a day as beautiful as the joy you bring to others. Happy birthday!”
+                </div>
+                <div class="meta"><i class="fas fa-pencil-alt"></i> from elara</div>
+            </div>
+
+            <!-- wish 2 - warm friend -->
+            <div class="wish-item">
+                <div class="emoji-icon">🥳</div>
+                <div class="wish-title">best friend forever</div>
+                <div class="wish-quote">
+                    “Another year of fabulous you! So glad we’re on this journey together. Cheers to you!”
+                </div>
+                <div class="meta"><i class="fas fa-heart"></i> from alex</div>
+            </div>
+
+            <!-- wish 3 - family style -->
+            <div class="wish-item">
+                <div class="emoji-icon">👑</div>
+                <div class="wish-title">for a parent</div>
+                <div class="wish-quote">
+                    “Thank you for all the love and wisdom. Happy birthday to the most amazing parent.”
+                </div>
+                <div class="meta"><i class="fas fa-feather"></i> from casey</div>
+            </div>
+
+            <!-- wish 4 - funny -->
+            <div class="wish-item">
+                <div class="emoji-icon">🕺</div>
+                <div class="wish-title">funny bone</div>
+                <div class="wish-quote">
+                    “You’re not getting older, you’re just becoming a classic! Happy level-up day.”
+                </div>
+                <div class="meta"><i class="fas fa-laugh-squint"></i> from jordan</div>
+            </div>
+
+            <!-- wish 5 - romantic / partner -->
+            <div class="wish-item">
+                <div class="emoji-icon">💞</div>
+                <div class="wish-title">for my love</div>
+                <div class="wish-quote">
+                    “Every day with you is a gift. Happy birthday to the one who makes my world complete.”
+                </div>
+                <div class="meta"><i class="fas fa-heart"></i> from taylor</div>
+            </div>
+
+            <!-- wish 6 - inspirational -->
+            <div class="wish-item">
+                <div class="emoji-icon">✨</div>
+                <div class="wish-title">inspire</div>
+                <div class="wish-quote">
+                    “May this year bring you closer to your dreams. You deserve all the happiness in the world.”
+                </div>
+                <div class="meta"><i class="fas fa-star"></i> from quinn</div>
+            </div>
+        </div>
+
+        <!-- extra row with some more sample messages (compact) + create / send -->
+        <div class="more-wishes">
+            <p>
+                <i class="fas fa-gift"></i> 
+                want a personalised wish?
+            </p>
+            <a href="#" class="wish-button" onclick="return false;"> 
+                <i class="fas fa-magic"></i>  create your own
+            </a>
+        </div>
+
+        <!-- recent posts / birthday notes (inspired by the original "RECENT POSTS") -->
+        <div class="recent-birthday-notes">
+            <span class="note-item"><i class="fas fa-clock"></i> RECENT BIRTHDAY NOTES</span>
+            <span class="note-item"><i class="fas fa-cake-candles"></i> “80th birthday toast ideas”</span>
+            <span class="note-item"><i class="fas fa-envelope-open-text"></i> “wishes for daughter”</span>
+            <span class="badge"><i class="fas-regular fa-message"></i> +4 new</span>
+        </div>
+
+        <!-- subtle contact line (matching +44 24/7 chat spirit but not intrusive) -->
+        <div style="padding: 1rem 2.5rem 1.8rem; background: #fffbf9; border-top: 1px solid #fadbcb; display: flex; gap: 1.5rem; font-size: 0.95rem; color: #6a4f39; flex-wrap: wrap;">
+            <span><i class="fas fa-phone-alt" style="color: #9d6e48;"></i> +44 20 3137 6284  </span>
+            <span><i class="fas fa-comment-dots" style="color: #9d6e48;"></i> 24/7 chat available </span>
+            <span style="margin-left: auto;"><i class="fas fa-tree" style="color: #ab7e58;"></i> create memorial · birthday wishes</span>
+        </div>
+    </div>
+
+    <!-- tiny "click the birthday wishes" reminder (this is a sample page after clicking) -->
+    <div class="click-reminder">
+        <i class="fas fa-mouse-pointer"></i> you clicked “Birthday Wishes” — here’s your sample page
+    </div>
+</body>
+</html>
